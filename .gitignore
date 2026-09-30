@@ -5,3 +5,7 @@ dist/
 
 # Generated per-run, contains no secrets but is regenerated fresh every spike run
 spike/generated/
+
+# Scratch copy of a downloaded CI artifact used to diagnose spike attempt #1 — not part of the
+# repo's real deliverable (see PLAN.md's "Spike attempt #1 result" for what it showed)
+ci-results/

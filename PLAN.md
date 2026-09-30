@@ -108,6 +108,28 @@ observed answer for each, recorded in `SPIKE.md` with actual captured output:
    minutes" — but the ACTUAL observed `info` output and timing, at 3-node laptop scale, is
    unverified).
 
+## Spike attempt #1 result (2026-09-30, real CI run on stellarbrief/upgrade-drill)
+
+Ran for real on GitHub's Docker-enabled runner (~14m40s). Every single HTTP request from the
+host (the `run-spike.sh` script itself, via `curl`) to any node's admin port failed outright —
+`{"error":"request failed"}` on 100% of ~20+ polling attempts across all 3 Run A trials and
+Run B, with no partial successes anywhere. This ruled out flakiness and pointed at one
+systemic cause, confirmed by reading `stellar-core_example.cfg`'s own documentation text for
+`PUBLIC_HTTP_PORT`: **"If false you only accept stellar commands from localhost."** The spike's
+generated configs had copied `PUBLIC_HTTP_PORT=false` verbatim from the reference standalone
+config — but `run-spike.sh`'s `curl` calls run on the CI runner's host, reaching each container
+through Docker's port-forwarding NAT, which a container does not see as literal loopback
+traffic. Every request was rejected before ever reaching stellar-core's actual `info`/`quorum`/
+`upgrades` handlers, which is exactly why items 2 and 3 above are still unresolved — the spike
+never got to actually exercise them.
+
+**Fix applied (attempt #2, distinct approach 1 of the spec's "at most 3" allowance)**:
+`PUBLIC_HTTP_PORT=true` in `generate-configs.sh`. Safe specifically here because this is a
+disposable, non-internet-exposed test network confined to the CI runner's own Docker host —
+consistent with the tool's own safety rules (never a real network, never exposed beyond local
+use). This is a real, confirmed fact now, not a guess: re-verify if a future `stellar-core`
+version changes this behavior, but don't re-litigate the reasoning above without new evidence.
+
 ## Phase A build order (this session)
 
 1. This `PLAN.md`.

@@ -56,7 +56,13 @@ write_config() {
   cat > "$path" <<EOF
 HTTP_PORT=11626
 PEER_PORT=11625
-PUBLIC_HTTP_PORT=false
+# PUBLIC_HTTP_PORT=false rejects any command whose apparent source isn't localhost — which
+# includes the CI runner's own curl calls arriving through Docker's port-forwarding NAT, not
+# literal loopback traffic from the container's own point of view. Confirmed live: with this
+# set to false, every info/quorum/upgrades call from the host returned nothing at all (real
+# spike run, 2026-09-30 CI). Safe to open here since this network is disposable and never
+# exposed beyond the CI runner's own Docker host — see PLAN.md's safety rules.
+PUBLIC_HTTP_PORT=true
 NETWORK_PASSPHRASE="$PASSPHRASE"
 DATABASE="sqlite3:///data/stellar.db"
 BUCKET_DIR_PATH="/data/buckets"
