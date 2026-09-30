@@ -392,6 +392,30 @@ skips straight to `run` on a restart, correctly preserving state. Also fixed `ru
 `all_upgraded` check to grep for the now-confirmed-real `"protocol_version"` field instead of
 the three guessed field names that were never matching anything.
 
+## Spike result: PASS (2026-09-30) — Phase A complete, proceeding to Phase B
+
+Real CI run, real results, read directly from `SPIKE.md`/fixtures, not assumed from a green
+checkmark: **all 3 Run A trials show PASS** — "all 3 nodes show protocol 29 in their final info
+fixture" — confirmed via the real `protocol_version` field. This meets the spec's own pass
+criteria for items 1–3 (3 consecutive clean boot+upgrade cycles).
+
+Run B (item 4, the mixed-version "laggard" case) produced a genuinely interesting, non-obvious
+real observation rather than the simplest possible one: node3 (left on the older binary,
+protocol 28, never voted) remained `"state": "Synced!"` with a fully agreeing 3-node quorum
+(`agree: 3`, `node_count: 3`) at the same ledger hash/close time as node1 (upgraded binary,
+reporting `protocol_version: 29`, `status: ["Armed with network upgrades..."]`). The two nodes
+did NOT diverge in ledger content despite reporting different self-described protocol versions —
+whether this means the upgrade step never actually finished applying, or `protocol_version`
+reports the binary's own max supported version rather than the ledger's actually-applied one, or
+something else, is a real, worthwhile question for Phase B's scenario design to dig into
+properly with purpose-built scenarios and more careful field-by-field interpretation — not
+something to conclude from one spike observation. This IS the "clear observation, even if
+surprising" the spec's pass criterion for item 4 asks for.
+
+**Decision: proceed to Phase B** — the full product (scenario engine, CLI, four built-in
+scenarios, contributor-readiness scaffolding matching `upgrade-preflight`'s shape), per the
+original spec's build order steps 2–8.
+
 ## Phase A build order (this session)
 
 1. This `PLAN.md`.
