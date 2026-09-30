@@ -30,11 +30,10 @@ services:
     depends_on:
       init-node1:
         condition: service_completed_successfully
-    entrypoint: ["/bin/sh", "-xc"]
-    command:
-      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg; h=$$?; echo \"NEWHIST_EXIT_CODE=$$h\"; [ $$h -eq 0 ] || exit $$h; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
     volumes:
       - ./generated/node1.cfg:/config/stellar-core.cfg:ro
+      - ./node-entrypoint.sh:/entrypoint.sh:ro
       - node1-data:/data
     ports:
       - "11626:11626"
@@ -47,11 +46,10 @@ services:
     depends_on:
       init-node2:
         condition: service_completed_successfully
-    entrypoint: ["/bin/sh", "-xc"]
-    command:
-      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg; h=$$?; echo \"NEWHIST_EXIT_CODE=$$h\"; [ $$h -eq 0 ] || exit $$h; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
     volumes:
       - ./generated/node2.cfg:/config/stellar-core.cfg:ro
+      - ./node-entrypoint.sh:/entrypoint.sh:ro
       - node2-data:/data
     ports:
       - "11627:11626"
@@ -64,11 +62,10 @@ services:
     depends_on:
       init-node3:
         condition: service_completed_successfully
-    entrypoint: ["/bin/sh", "-xc"]
-    command:
-      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg; h=$$?; echo \"NEWHIST_EXIT_CODE=$$h\"; [ $$h -eq 0 ] || exit $$h; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
     volumes:
       - ./generated/node3.cfg:/config/stellar-core.cfg:ro
+      - ./node-entrypoint.sh:/entrypoint.sh:ro
       - node3-data:/data
     ports:
       - "11628:11626"

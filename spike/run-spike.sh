@@ -153,10 +153,15 @@ run_a_trial() {
     http_get "$port" info > "$FIXTURES_DIR/runA-t${trial}-${label}-info-final.json"
   done
 
+  # "protocol_version" is the REAL, confirmed field name (see PLAN.md "Spike attempt #7
+  # result") — a top-level field under .info, distinct from the unrelated .info.ledger.version
+  # (the ledger header's own internal XDR version, not the network's protocol version). An
+  # earlier heuristic guessed "ledgerVersion"/"version"/"protocolVersion" and never matched
+  # anything, which is why prior trials all showed INCONCLUSIVE instead of PASS or BROKE.
   local all_upgraded=1
   for label_port in "node1:11626" "node2:11627" "node3:11628"; do
     local label="${label_port%%:*}"
-    if ! grep -q "\"ledgerVersion\" *: *${NEWER_TAG}\|\"version\" *: *${NEWER_TAG}\|protocolVersion.*${NEWER_TAG}" \
+    if ! grep -q "\"protocol_version\" *: *${NEWER_TAG}" \
         "$FIXTURES_DIR/runA-t${trial}-${label}-info-final.json" 2>/dev/null; then
       all_upgraded=0
     fi

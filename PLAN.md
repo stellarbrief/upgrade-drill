@@ -341,6 +341,57 @@ Added `stellar-core new-hist local --conf ...` to `docker-compose.yml`'s command
 pattern) so a failure here is visible too. Verified the config template renders correctly via a
 local dry run with fake keys before pushing.
 
+**Real result — major milestone**: all three nodes now genuinely boot, join the overlay
+network, and reach real SCP consensus. Confirmed via a real captured `info` response on the
+initial (older-image) boot:
+
+```json
+"peers": { "authenticated_count": 2, "pending_count": 0 },
+"protocol_version": 28,
+"quorum": { "transitive": { "intersection": true, "node_count": 3 } },
+"state": "Synced!"
+```
+
+This is genuine, direct proof the 3-node private network (manual `[QUORUM_SET]`, `KNOWN_PEERS`,
+`HISTORY.local`) works: all 3 nodes authenticated with each other, the full 3-node quorum
+participates, quorum intersection holds, and the node reports `Synced!`. Spike items 1 (boot,
+ledgers closing) are confirmed. This also gave the first real, confirmed value of the actual
+`info` field name for protocol version: **`protocol_version`** (a top-level field), not
+`ledgerVersion`/`version`/`protocolVersion` as earlier heuristics guessed — those guesses were
+matching nothing, which is part of why every earlier grep-based check said INCONCLUSIVE rather
+than a real PASS/FAIL.
+
+## Attempt #8: don't re-run one-time init commands on a preserved-data restart (2026-09-30)
+
+All three Run A trials moved from FAIL to INCONCLUSIVE, but the *restart-on-newer-image* phase
+(the actual upgrade simulation) itself was still failing — just less catastrophically. Real
+captured log:
+
+```
++ stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg
+...
++ h=1
++ echo NEWHIST_EXIT_CODE=1
++ exit 1
+```
+
+Root cause, confirmed identically on every node in every trial: `new-db` and `new-hist` are
+ONE-TIME initialization commands, but the original command chain ran both unconditionally on
+EVERY container start — including the restart onto the newer image, which deliberately reuses
+the SAME data volume specifically to preserve the first boot's ledger state (simulating a real
+operator swapping binaries in place). `new-hist local` fails outright against an
+already-initialized archive. Worse: unconditionally re-running `new-db` against an existing
+database on every restart may well have been silently undermining the "preserve state across
+the binary swap" design from the very first successful boot, even before this failure was
+noticed as fatal.
+
+**Fix applied**: moved the inline command (which had grown unwieldy as a Compose YAML one-liner)
+into `spike/node-entrypoint.sh`, mounted read-only into each container. It now checks for
+`/data/stellar.db`'s existence: runs `new-db`/`new-hist` only on a genuinely fresh volume, and
+skips straight to `run` on a restart, correctly preserving state. Also fixed `run-spike.sh`'s
+`all_upgraded` check to grep for the now-confirmed-real `"protocol_version"` field instead of
+the three guessed field names that were never matching anything.
+
 ## Phase A build order (this session)
 
 1. This `PLAN.md`.
