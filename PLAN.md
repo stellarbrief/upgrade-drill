@@ -437,6 +437,54 @@ original spec's build order steps 2–8.
    - **Spike fails** after at most 3 distinct fixed approaches: stop, do not build a fake
      simulated substitute, report exactly what blocked it and let the user decide next steps.
 
+## Verify-scenarios attempt #1: all four scenarios run for real (2026-09-30)
+
+After Phase B's initial push and its one passing `happy-path` integration test, the other
+three built-in scenarios had never been run against real Docker at all — only schema-validated
+and previewed via `--dry-run`. Added `.github/workflows/verify-scenarios.yml` (manual-dispatch,
+runs all four via the real built CLI, uploads each real report) and triggered it for real.
+
+**Real results, read from the actual JSON reports, not assumed from CI's own green/red**:
+
+- `happy-path`: `NETWORK_UPGRADED`, all 3 synced on protocol 29. Consistent with the earlier
+  integration test.
+- `quorum-breaker`: `NETWORK_STALLED` — exactly the designed outcome. node1-3 show `"Joining
+  SCP"` (correctly not synced, since node4/node5 being stopped broke the 5-node 67%→4-of-5
+  threshold), node4/node5 show no state at all (correctly unreachable). A genuine, correct pass.
+- `one-laggard`: node1/node2 reached protocol 29, node3 (the laggard) stayed at 28, all three
+  remained `"Synced!"` — an EXACT match to the original spike's finding, now confirmed on a
+  second independent real run. The verdict came back `INCONCLUSIVE` only because the scenario
+  hadn't declared a `finalProtocolVersion` expectation to compare against — not a product bug.
+- `mismatched-vote`: **a genuine, real scenario-design bug, not a false alarm.** All 3 nodes
+  actually converged on protocol 29 despite the staggered upgrade times (45s vs. 120s delay).
+  The gap wasn't wide enough: node3's own scheduled time (120s after the vote, well inside the
+  150s final wait) arrived DURING the observation window, so node3 eventually agreed too. The
+  scenario didn't demonstrate what its name claims.
+
+**Also a real workflow-ergonomics bug** (not a product bug): `upgrade-drill run`'s CLI
+deliberately exits non-zero for real, correct verdicts (`1` for
+`NETWORK_STALLED`/`UPGRADE_NOT_ADOPTED`, `2` for `INCONCLUSIVE`) — but the verify workflow
+treated ANY non-zero exit as a CI job failure, painting `quorum-breaker` and `one-laggard`/
+`mismatched-vote`'s correct, honest verdicts as red X's. Fixed by only failing the job on an
+exit code outside `{0,1,2}` (a genuine tool crash), not an expected verdict-driven exit.
+
+**Fixes applied**:
+1. `mismatched-vote.yml`: node3's `upgradeDelaySeconds` raised from `120` to `900` — comfortably
+   longer than the drill's own final wait, so node3's own scheduled time never actually arrives
+   while observations are being collected, producing genuine, sustained disagreement instead of
+   eventual convergence. Added `expectations.finalProtocolVersion: 29` so the verdict engine can
+   now classify the (correctly) non-universal outcome as `UPGRADE_NOT_ADOPTED` instead of
+   `INCONCLUSIVE`.
+2. `one-laggard.yml`: added `expectations.finalProtocolVersion: 29`, justified by the same real
+   dynamic now confirmed on two independent real runs (the original spike and this verify run) —
+   the verdict is now the more decisive `UPGRADE_NOT_ADOPTED` rather than `INCONCLUSIVE`.
+3. `verify-scenarios.yml`: the "Run `<scenario>`" step now only fails the job for an exit code
+   outside `{0,1,2}`.
+
+**Next step**: re-trigger `verify-scenarios.yml` and confirm `mismatched-vote` now genuinely
+produces `UPGRADE_NOT_ADOPTED` (not just a longer wait producing the same convergence), and that
+all four jobs show green with the exit-code fix in place.
+
 ## Safety rules (apply throughout, spike and full product alike)
 
 - Local only — never connects to Mainnet, Testnet, or any real network. Every run generates

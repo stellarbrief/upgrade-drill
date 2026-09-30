@@ -26,10 +26,22 @@ jobs:
       - run: docker pull stellar/stellar-core:28
       - run: docker pull stellar/stellar-core:29
       - name: Run ${{ matrix.scenario }}
+        # The CLI deliberately exits non-zero for some real, correct verdicts (1 for
+        # NETWORK_STALLED/UPGRADE_NOT_ADOPTED, 2 for INCONCLUSIVE) — that's the intended
+        # outcome for scenarios like quorum-breaker, not a crash. Only an exit code OUTSIDE
+        # {0,1,2} is a genuine tool failure worth failing this job over.
         run: |
+          set +e
           node dist/cli/index.js run "scenarios/${{ matrix.scenario }}.yml" \
             --markdown-out "${{ matrix.scenario }}-report.md" \
             --json-out "${{ matrix.scenario }}-report.json"
+          code=$?
+          echo "CLI exited with code $code"
+          if [ "$code" -gt 2 ]; then
+            echo "::error::Exit code $code is outside the expected {0,1,2} verdict-exit-code range — a real tool failure, not an expected verdict."
+            exit "$code"
+          fi
+          exit 0
       - name: Write report to job summary
         if: always()
         run: |

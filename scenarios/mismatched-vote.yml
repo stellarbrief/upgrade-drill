@@ -1,10 +1,18 @@
 # All three validators stay up and reachable the whole time — no laggard, no stopped node.
 # The only difference from happy-path is that node3 is armed with a DIFFERENT scheduled
-# upgrade time than node1/node2 (via a separate set-upgrade action with a longer
-# upgradeDelaySeconds). Per stellar-core's own documented rule (docs/versioning.md, quoted in
-# ../PLAN.md "Verified facts"): a node drops an upgrade step whose value differs from its own
-# scheduled setting — so the quorum should be unable to agree on one shared value, and the
-# upgrade should not be adopted by anyone, even though every node stays healthy throughout.
+# upgrade time than node1/node2 (via a separate set-upgrade action with a much longer
+# upgradeDelaySeconds — comfortably longer than the drill's own final wait, so node3's own
+# scheduled time never actually arrives while we're observing). Per stellar-core's own
+# documented rule (docs/versioning.md, quoted in ../PLAN.md "Verified facts"): a node drops an
+# upgrade step whose value differs from its own scheduled setting — so the quorum should be
+# unable to agree on one shared value within this window, even though every node stays healthy
+# throughout.
+#
+# Real finding (see ../PLAN.md "Verify-scenarios attempt #1"): an earlier version of this
+# scenario used only a 120s delay for node3 against a 150s final wait — long enough for
+# node3's own scheduled time to arrive DURING the drill, so all three nodes ended up agreeing
+# anyway once it did. The gap must outlast the whole observation window to produce genuine,
+# sustained disagreement.
 name: mismatched-vote
 description: Validators disagree on exactly when to apply the same upgrade, so it never gets adopted.
 
@@ -40,7 +48,7 @@ timeline:
       type: set-upgrade
       nodes: [node3]
       protocolVersion: 29
-      upgradeDelaySeconds: 120
+      upgradeDelaySeconds: 900
   - at: 180
     action: { type: wait, seconds: 150 }
 
@@ -48,4 +56,5 @@ observations:
   intervalSeconds: 10
 
 expectations:
+  finalProtocolVersion: 29
   nodesShouldStaySynced: [node1, node2, node3]

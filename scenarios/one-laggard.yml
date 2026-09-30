@@ -1,8 +1,11 @@
 # Two of three validators upgrade their binaries and vote; the third is left on the old
 # version and never votes — a real operator who missed the upgrade window. Proven live in the
-# feasibility spike's "Run B" (see ../PLAN.md and ../fixtures/one-laggard-*.json): the laggard
-# stayed fully synced and quorum-agreeing rather than halting outright, which is itself a
-# real, worthwhile finding for operators to see for themselves, not assumed in advance.
+# feasibility spike's "Run B" (see ../PLAN.md and ../fixtures/one-laggard-*.json) and confirmed
+# again on a second independent real run (../PLAN.md "Verify-scenarios attempt #1"): the
+# laggard stayed fully synced and quorum-agreeing rather than halting outright, which is itself
+# a real, worthwhile finding for operators to see for themselves, not assumed in advance.
+# `finalProtocolVersion` is declared below because this dynamic is now confirmed reproducible
+# across two independent real runs, not a one-off — node3 genuinely never reaches it.
 name: one-laggard
 description: One validator misses the upgrade vote entirely while the other two proceed.
 
@@ -40,4 +43,5 @@ observations:
   intervalSeconds: 10
 
 expectations:
+  finalProtocolVersion: 29
   nodesShouldStaySynced: [node1, node2, node3]
