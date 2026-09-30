@@ -208,10 +208,91 @@ run_b_trial() {
   teardown
 }
 
-for t in 1 2 3; do
-  run_a_trial "$t"
-done
-run_b_trial
+# ---------------------------------------------------------------------------
+# Sanity check (added after attempt #4's unexplained near-instant exit(1), per the user's own
+# choice of "isolate with a single-node sanity check" — see PLAN.md "Attempt #5 evidence-
+# gathering result"): runs ONE node using stellar-core's own proven, documented single-node
+# pattern (RUN_STANDALONE=true, THRESHOLD_PERCENT=100, VALIDATORS=["$self"] — copied as closely
+# as possible from stellar-core_standalone.cfg) via a plain `docker run`, fully decoupled from
+# the multi-node compose topology. If even THIS fails, the problem is environmental (something
+# about running stellar-core in this CI environment at all), not specific to the 3-node
+# QUORUM_SET/KNOWN_PEERS configuration — and the multi-node trials are skipped rather than
+# wasting ~13 more minutes reproducing a already-explained failure.
+# ---------------------------------------------------------------------------
+run_sanity_check() {
+  log "=== Sanity check: single node, stellar-core's own proven RUN_STANDALONE pattern ==="
+
+  docker rm -f sanity-node >/dev/null 2>&1 || true
+  docker volume rm -f sanity-node-data >/dev/null 2>&1 || true
+
+  local out
+  out="$(docker run --rm "stellar/stellar-core:$OLDER_TAG" gen-seed)"
+  local secret public
+  secret="$(echo "$out" | grep 'Secret seed:' | awk '{print $3}')"
+  public="$(echo "$out" | grep 'Public:' | awk '{print $2}')"
+  if [ -z "$secret" ] || [ -z "$public" ]; then
+    log "sanity check: could not even generate a keypair — aborting sanity check itself"
+    RESULTS+=("Sanity check: FAIL (gen-seed itself did not produce a usable keypair)")
+    return 1
+  fi
+
+  mkdir -p "$GENERATED_DIR"
+  cat > "$GENERATED_DIR/sanity.cfg" <<EOF
+HTTP_PORT=11626
+PUBLIC_HTTP_PORT=true
+NETWORK_PASSPHRASE="upgrade-drill spike sanity-check ; 2026-09-30"
+DATABASE="sqlite3:///data/stellar.db"
+BUCKET_DIR_PATH="/data/buckets"
+
+NODE_SEED="$secret self"
+NODE_IS_VALIDATOR=true
+RUN_STANDALONE=true
+UNSAFE_QUORUM=true
+FAILURE_SAFETY=0
+
+[QUORUM_SET]
+THRESHOLD_PERCENT=100
+VALIDATORS=["\$self"]
+EOF
+
+  docker volume create sanity-node-data >/dev/null
+  docker run -d --name sanity-node \
+    -p 11629:11626 \
+    -v "$GENERATED_DIR/sanity.cfg:/config/stellar-core.cfg:ro" \
+    -v sanity-node-data:/data \
+    --entrypoint /bin/sh \
+    "stellar/stellar-core:$OLDER_TAG" \
+    -xc "mkdir -p /data/buckets && chmod -R 777 /data && stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=\$?; echo \"NEWDB_EXIT_CODE=\$c\"; [ \$c -eq 0 ] || exit \$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg" \
+    >/dev/null
+
+  local ok=1
+  if wait_for_synced 11629 "sanity" 60; then
+    ok=0
+  fi
+
+  docker logs sanity-node > "$FIXTURES_DIR/sanity-container-log.txt" 2>&1 || true
+  docker inspect sanity-node --format '{{json .State}}' > "$FIXTURES_DIR/sanity-container-state.json" 2>&1 || true
+
+  docker rm -f sanity-node >/dev/null 2>&1 || true
+  docker volume rm -f sanity-node-data >/dev/null 2>&1 || true
+
+  if [ "$ok" -eq 0 ]; then
+    RESULTS+=("Sanity check: PASS (a single RUN_STANDALONE node reached a synced-looking state — the problem is specific to the multi-node QUORUM_SET/KNOWN_PEERS config, not this environment generally)")
+    return 0
+  else
+    RESULTS+=("Sanity check: FAIL (even stellar-core's own proven single-node RUN_STANDALONE pattern did not reach a synced state in this environment — see fixtures/sanity-container-log.txt and sanity-container-state.json. Skipping the multi-node trials below rather than reproducing an already-explained failure.)")
+    return 1
+  fi
+}
+
+if run_sanity_check; then
+  for t in 1 2 3; do
+    run_a_trial "$t"
+  done
+  run_b_trial
+else
+  log "Sanity check failed — skipping Run A/Run B multi-node trials (see Results)."
+fi
 
 # ---------------------------------------------------------------------------
 # Write SPIKE.md from what actually happened above — never hand-authored.

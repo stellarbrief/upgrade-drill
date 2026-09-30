@@ -267,6 +267,50 @@ for whatever the next real fix turns out to be. If the crash message now surface
 directly. If it still doesn't, that's a stronger signal (ruling out buffering) worth reporting
 back rather than guessing again.
 
+## Attempt #5 evidence-gathering result (2026-09-30) — buffering and OOM both ruled out
+
+Real CI run, `stdbuf` line-buffering in place, `docker inspect`'s `.State` captured per node.
+Consistent across all three nodes and every trial (checked node1 and node2 independently,
+identical pattern):
+
+- `new-db` completes successfully (`NEWDB_EXIT_CODE=0`, explicitly echoed via `set -x` tracing).
+- `run` starts, loads its config, logs the identical `Using QUORUM_SET` block `new-db` already
+  showed — then produces **zero further output** despite line-buffered stdout/stderr. Buffering
+  is now ruled out as the explanation: if a message had been printed and merely delayed by
+  buffering, `stdbuf` would have forced it out immediately.
+- `docker inspect`'s `.State` for node1: `{"OOMKilled":false, "ExitCode":1, "Error":"",
+  "StartedAt":"...06.694...Z", "FinishedAt":"...06.964...Z"}` — a **270 millisecond** total
+  container lifetime covering BOTH `new-db` and `run`. Node2's independent trial: an equally
+  fast ~258ms lifetime, `ExitCode:1`, `OOMKilled:false`. This rules out OOM-kill and any
+  signal-based death (which would show as exit code 128+signal, e.g. 137 or 139) — this is a
+  clean, deliberate, near-instantaneous `exit(1)` from `run`'s own code, with no accompanying
+  log line through any observable channel.
+
+**Assessment**: the evidence-gathering pass worked exactly as intended — it eliminated two
+plausible explanations (buffering, OOM) with certainty, rather than leaving them as unresolved
+guesses. But it did not surface an actionable error message, and the remaining explanation
+(a very early, silent validation check in `run`'s startup path failing before reaching any
+logged code path) is not something that can be narrowed further without either: (a) testing
+whether a single-node `RUN_STANDALONE=true` config — the already-proven-real pattern from
+`stellar-core`'s own `stellar-core_standalone.cfg` — runs at all in this same environment, to
+isolate whether the problem is specific to the multi-node `QUORUM_SET`/`KNOWN_PEERS`
+configuration or something more fundamental about running this image in GitHub's runner at all;
+or (b) raising `stellar-core`'s own log verbosity (`COMMANDS=["ll?level=debug"]`, a real,
+documented startup command) in case a near-instant failure still logs something at DEBUG level
+that INFO suppresses. Reporting this to the user for direction rather than picking one
+unilaterally, per their own "gather evidence, then decide" framing.
+
+## Attempt #6: single-node sanity check (2026-09-30)
+
+User chose option (a) above. Added `run_sanity_check` to `run-spike.sh`: boots exactly ONE node
+via a plain `docker run` (fully decoupled from the 3-node Compose topology), using a config
+copied as closely as possible from `stellar-core`'s own proven `stellar-core_standalone.cfg`
+(`RUN_STANDALONE=true`, `THRESHOLD_PERCENT=100`, `VALIDATORS=["$self"]`) rather than any of this
+project's own multi-node choices. Runs BEFORE Run A/Run B and gates them: if even this
+known-good pattern can't reach a synced state in this CI environment, the multi-node trials are
+skipped rather than spending ~13 more minutes reproducing an already-explained failure. Real
+outcome will be read from the next CI run and recorded here, not assumed.
+
 1. This `PLAN.md`.
 2. `spike/` — real Docker Compose file, 3 generated `stellar-core` configs (2 on `:29`, 1 on
    `:28` for the mixed-version item 4 of the spike), a driver script that boots them, polls
