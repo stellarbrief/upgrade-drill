@@ -485,6 +485,36 @@ exit code outside `{0,1,2}` (a genuine tool crash), not an expected verdict-driv
 produces `UPGRADE_NOT_ADOPTED` (not just a longer wait producing the same convergence), and that
 all four jobs show green with the exit-code fix in place.
 
+**Re-trigger result**: `happy-path` (`NETWORK_UPGRADED`), `one-laggard` (`UPGRADE_NOT_ADOPTED`,
+now decisive), and `quorum-breaker` (`NETWORK_STALLED`) all confirmed correct. But
+`mismatched-vote` STILL showed `NETWORK_UPGRADED` — node3 reached protocol 29 despite its own
+scheduled upgrade time (900s) being far outside the drill's 330s total length, meaning it could
+not possibly have "agreed" via its own scheduled vote.
+
+## Verify-scenarios attempt #2: a bigger finding than a scenario bug (2026-09-30)
+
+Read the FULL real timeline (not just the final snapshot) from `mismatched-vote`'s own JSON
+report — the observation system already captures a snapshot every 10s throughout the drill, so
+no new instrumentation was needed. Node3's `protocol_version` jumps from 28 to 29 at
+**+91s to +101s** — immediately after the binary restart at t=90s, a full 90+ seconds BEFORE
+the `set-upgrade` HTTP vote is even fired at t=180s. Checked `happy-path`'s own timeline too:
+identical pattern, node1 jumps 28→29 at +91s, also well before its own t=180s vote.
+
+**This suggests the explicit `upgrades` HTTP command may not be what's actually driving the
+observed protocol version change in either scenario** — the real trigger looks like: restarting
+all validators onto a newer binary against an existing ledger appears to renegotiate the
+protocol version automatically, once every connected/quorum node is binary-capable of it,
+independent of any explicit vote. If true, this reshapes what `one-laggard`'s real dynamic
+actually is: not "node3 didn't vote," but "node3 was never restarted onto the newer binary at
+all" — a materially different (and more important) thing for this tool to be honest about.
+
+**Decisive control test, per the user's own choice to verify before concluding**: added
+`scenarios/_diagnostic-no-vote-control.yml` (restarts all 3 validators onto `:29`, never calls
+`set-upgrade` at all) and temporarily narrowed `verify-scenarios.yml`'s matrix to just this one
+scenario. If `protocol_version` still climbs to 29 with zero votes ever fired, that conclusively
+proves the hypothesis. Real result pending — read it before drawing any conclusion or making
+any further design change, per this whole project's own established discipline.
+
 ## Safety rules (apply throughout, spike and full product alike)
 
 - Local only — never connects to Mainnet, Testnet, or any real network. Every run generates

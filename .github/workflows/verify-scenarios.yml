@@ -14,7 +14,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scenario: [happy-path, one-laggard, quorum-breaker, mismatched-vote]
+        # TEMPORARY: narrowed to just the diagnostic control scenario for one run — see
+        # PLAN.md "Verify-scenarios attempt #2". Revert to the real 4-scenario list after.
+        scenario: [_diagnostic-no-vote-control]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
