@@ -130,6 +130,40 @@ consistent with the tool's own safety rules (never a real network, never exposed
 use). This is a real, confirmed fact now, not a guess: re-verify if a future `stellar-core`
 version changes this behavior, but don't re-litigate the reasoning above without new evidence.
 
+## Spike attempt #2 result (2026-09-30, same day, real CI re-run after the PUBLIC_HTTP_PORT fix)
+
+Re-ran for real (~14m33s). Identical symptom: every fixture still reads exactly
+`{"error":"request failed"}` — `PUBLIC_HTTP_PORT` was a real, confirmed fact but NOT the (sole,
+or even the actual) cause of the connection failures; the TCP connection itself never succeeded,
+meaning the container plausibly never got far enough to open its HTTP port at all. **A real gap
+in the spike's own design was found here**: it never captured `docker compose logs` or
+`docker compose ps` output, so this second failure could only be diagnosed blind — there was no
+way to tell "the port is closed because of a config rule" from "the container crashed before
+ever listening" from the HTTP responses alone.
+
+**Fix applied (attempt #3 — the last one the spec's own "at most 3 distinct approaches" rule
+allows before stopping and reporting honestly rather than continuing to guess)**, addressing
+both the diagnostic gap and the most likely concrete cause:
+1. `run-spike.sh` now captures real `docker compose logs <service>` and `docker compose ps -a`
+   into fixtures on every `wait_for_synced` timeout — so this run finally produces genuine
+   evidence regardless of outcome, closing the design gap above.
+2. Added an `init-node{1,2,3}` service per node in `docker-compose.yml` (plain `alpine:3.20`,
+   gated via Compose's `depends_on: condition: service_completed_successfully`) that runs
+   `mkdir -p /data/buckets && chmod -R 777 /data` before the real node starts. Reasoning: a
+   fresh named Docker volume is created root-owned; if the `stellar-core` image's process runs
+   as a non-root user (common for hardened images) — which was NOT independently confirmed
+   live, since we had no container logs to check it against — writing the sqlite DB or bucket
+   directory into a root-owned `/data` would fail, and the process could plausibly exit (or
+   never reach the point of opening its HTTP port) well before any of `wait_for_synced`'s
+   90-second polling window elapsed. This is the single most likely concrete explanation for
+   "container never accepts a TCP connection at all," but it is a well-reasoned hypothesis
+   informed by the evidence available, not something confirmed by a log line yet — attempt #3's
+   own captured logs either confirm it or point at the real cause instead.
+
+**If attempt #3 still fails**: per the spec's own stop condition, do not attempt a fourth blind
+fix. Read whatever `docker compose logs`/`ps` output it captures, write the real findings here,
+and report to the user what's blocking it rather than continuing to guess.
+
 ## Phase A build order (this session)
 
 1. This `PLAN.md`.

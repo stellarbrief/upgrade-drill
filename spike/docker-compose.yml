@@ -4,9 +4,32 @@
 name: upgrade-drill-spike
 
 services:
+  # Named volumes are created root-owned and empty by Docker. If the stellar-core image runs
+  # as a non-root user by default, `new-db`/bucket writes into a fresh /data volume can fail
+  # silently from the host's point of view (the container never gets far enough to open its
+  # HTTP port at all) — see PLAN.md "Spike attempt #2 result" for why this was added.
+  init-node1:
+    image: alpine:3.20
+    command: ["sh", "-c", "mkdir -p /data/buckets && chmod -R 777 /data"]
+    volumes:
+      - node1-data:/data
+  init-node2:
+    image: alpine:3.20
+    command: ["sh", "-c", "mkdir -p /data/buckets && chmod -R 777 /data"]
+    volumes:
+      - node2-data:/data
+  init-node3:
+    image: alpine:3.20
+    command: ["sh", "-c", "mkdir -p /data/buckets && chmod -R 777 /data"]
+    volumes:
+      - node3-data:/data
+
   node1:
     image: stellar/stellar-core:${NODE1_TAG:-29}
     hostname: node1
+    depends_on:
+      init-node1:
+        condition: service_completed_successfully
     entrypoint: ["/bin/sh", "-c"]
     command:
       - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
@@ -21,6 +44,9 @@ services:
   node2:
     image: stellar/stellar-core:${NODE2_TAG:-29}
     hostname: node2
+    depends_on:
+      init-node2:
+        condition: service_completed_successfully
     entrypoint: ["/bin/sh", "-c"]
     command:
       - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
@@ -35,6 +61,9 @@ services:
   node3:
     image: stellar/stellar-core:${NODE3_TAG:-29}
     hostname: node3
+    depends_on:
+      init-node3:
+        condition: service_completed_successfully
     entrypoint: ["/bin/sh", "-c"]
     command:
       - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"

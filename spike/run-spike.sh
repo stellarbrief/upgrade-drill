@@ -27,6 +27,22 @@ http_get() {
   curl -s -m 5 "http://localhost:$1/$2" || echo '{"error":"request failed"}'
 }
 
+capture_container_logs() {
+  # $1 = a label containing "node1"/"node2"/"node3" somewhere in it (e.g. "runA-t1-node1-boot").
+  # Captures real container stdout/stderr so a failure has actual evidence, not another guess.
+  local label="$1" svc=""
+  case "$label" in
+    *node1*) svc="node1" ;;
+    *node2*) svc="node2" ;;
+    *node3*) svc="node3" ;;
+  esac
+  [ -n "$svc" ] || return 0
+  docker compose -f "$SPIKE_DIR/docker-compose.yml" logs --no-color "$svc" \
+    > "$FIXTURES_DIR/${label}-container-log.txt" 2>&1 || true
+  docker compose -f "$SPIKE_DIR/docker-compose.yml" ps -a \
+    > "$FIXTURES_DIR/${label}-compose-ps.txt" 2>&1 || true
+}
+
 wait_for_synced() {
   # $1 = port, $2 = node label, $3 = timeout seconds
   local port="$1" label="$2" timeout="${3:-90}" waited=0
@@ -45,6 +61,7 @@ wait_for_synced() {
   done
   log "$label did NOT report a synced-looking state within ${timeout}s"
   http_get "$port" info > "$FIXTURES_DIR/${label}-info-timeout.json"
+  capture_container_logs "$label"
   return 1
 }
 
