@@ -7,8 +7,11 @@ export interface NodeSnapshot {
   /** stellar-core's own top-level `info.state` field, e.g. "Synced!", "Catching up!". Null if
    * unreachable or the field was missing from the response. */
   state: string | null;
-  /** The real, confirmed `info.protocol_version` field — see PLAN.md "Spike attempt #7
-   * result". Null if unreachable or missing. */
+  /** The real last-closed ledger's consensus-agreed protocol version — `info.ledger.version`
+   * in stellar-core's own source, NOT the top-level `info.protocol_version` (that field is the
+   * running binary's own configured max, which changes instantly on restart before any real
+   * consensus — see PLAN.md "Verify-scenarios attempt #2" and `src/driver/http-client.ts`).
+   * Null if unreachable or missing. */
   protocolVersion: number | null;
   ledgerNum: number | null;
   quorumAgree: number | null;

@@ -3,6 +3,33 @@
 Real problems hit while building this tool, and what actually fixed them — see the repo's own
 `PLAN.md` for the full, blow-by-blow debugging history if you want more detail than this.
 
+## `info.protocol_version` looks like the obvious field for "has this upgraded?" — it isn't
+
+This was the single most important, hardest-won correction in this whole project. Per
+stellar-core's own source (`src/main/ApplicationImpl.cpp`'s `getJsonInfo`):
+
+```cpp
+info["protocol_version"] = getConfig().LEDGER_PROTOCOL_VERSION;   // the running BINARY's own
+                                                                   // configured max version
+info["ledger"]["version"] = lcl.header.ledgerVersion;             // the REAL, consensus-agreed
+                                                                   // protocol version of the
+                                                                   // actual last closed ledger
+```
+
+`protocol_version` (top-level) reflects what the currently-running `stellar-core` BINARY is
+configured to support — it changes the instant a node restarts on a newer image, before it has
+even reconnected to its peers, let alone participated in any real consensus round. It was
+caught live: a control scenario that restarted validators onto a newer binary but never fired
+any upgrade vote at all STILL showed `protocol_version` jump immediately, while `ledger.num`
+and quorum health data were clearly still resetting/catching up.
+
+**`info.ledger.version` is the field that actually answers "has this ledger genuinely adopted
+the new protocol via real network consensus."** Every part of this codebase that cares about a
+node's real protocol state (`src/driver/http-client.ts`'s `getInfoSnapshot`, and therefore
+`src/verdict/engine.ts`'s classification) reads `ledger.version`, never the top-level field. If
+you're adding new code that inspects a node's `info` response, don't reach for the
+obviously-named field without checking this first.
+
 ## A node never responds to `info`/`quorum`/`upgrades` at all
 
 Check `PUBLIC_HTTP_PORT` in the generated config (`src/topology/render-config.ts`). If it's

@@ -360,6 +360,13 @@ ledgers closing) are confirmed. This also gave the first real, confirmed value o
 `ledgerVersion`/`version`/`protocolVersion` as earlier heuristics guessed — those guesses were
 matching nothing, which is part of why every earlier grep-based check said INCONCLUSIVE rather
 than a real PASS/FAIL.
+>
+> **CORRECTION, added after "Verify-scenarios attempt #2" below**: `protocol_version` is a
+> real field, but it is NOT the network's actual consensus-agreed protocol version — it's the
+> running binary's own configured max (per stellar-core's own source), which changes instantly
+> on a bare restart before any real consensus happens. The real field is `info.ledger.version`.
+> Left the original text above as-written rather than editing history — see "Verify-scenarios
+> attempt #2" for the full story of how this was caught and fixed in the Phase B product.
 
 ## Attempt #8: don't re-run one-time init commands on a preserved-data restart (2026-09-30)
 

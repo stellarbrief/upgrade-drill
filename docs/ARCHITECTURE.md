@@ -17,8 +17,13 @@ every vote is the real `upgrades` HTTP command, every observation is a real HTTP
 
 This is deliberately built on a foundation proven by a feasibility spike (see the repo's own
 `PLAN.md`) — every config field, every command sequencing choice (like running `new-hist`
-exactly once, not on every restart), and the real `info.protocol_version` field name came from
-debugging real failures against real containers, not from documentation alone.
+exactly once, not on every restart), came from debugging real failures against real containers,
+not from documentation alone. The real protocol-version field itself was a hard-won correction:
+`info.protocol_version` LOOKS like the obvious field, but per stellar-core's own source
+(`ApplicationImpl.cpp`) it's the running binary's own configured maximum, not the network's
+actual state — it was caught only because it changed instantly on a bare restart, before any
+real consensus could occur. The real, consensus-agreed protocol version is
+`info.ledger.version`.
 
 ## Module map
 

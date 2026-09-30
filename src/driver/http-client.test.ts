@@ -1,11 +1,16 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fireUpgradeVote, getInfoSnapshot, getQuorumRaw } from './http-client.js';
 
+// Deliberately DIFFERENT values for the two version fields, matching what a real node reports
+// immediately after a binary restart but before any new consensus: `protocol_version` (the
+// binary's own configured max, per stellar-core's real `getJsonInfo` source) jumps ahead of
+// `ledger.version` (the actually-closed ledger's real, consensus-agreed protocol version). See
+// PLAN.md "Verify-scenarios attempt #2" for the real, live-captured data this is modeled on.
 const REAL_INFO_RESPONSE = {
   info: {
     state: 'Synced!',
-    protocol_version: 28,
-    ledger: { num: 24, version: 0 },
+    protocol_version: 29,
+    ledger: { num: 24, version: 28 },
     quorum: {
       node: 'self',
       qset: { agree: 3, cost: 100 },
@@ -31,11 +36,11 @@ describe('getInfoSnapshot', () => {
     });
   });
 
-  it('does NOT confuse info.ledger.version with info.protocol_version', async () => {
+  it('reads ledger.version (the real, consensus-agreed protocol), NEVER the top-level protocol_version field (the local binary\'s own configured max)', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify(REAL_INFO_RESPONSE))));
     const snap = await getInfoSnapshot('node1', 11626);
-    expect(snap.protocolVersion).toBe(28);
-    expect(snap.protocolVersion).not.toBe(REAL_INFO_RESPONSE.info.ledger.version);
+    expect(snap.protocolVersion).toBe(REAL_INFO_RESPONSE.info.ledger.version);
+    expect(snap.protocolVersion).not.toBe(REAL_INFO_RESPONSE.info.protocol_version);
   });
 
   it('marks a snapshot unreachable when the request fails, without throwing', async () => {

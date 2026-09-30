@@ -10,9 +10,25 @@ async function httpGet(hostPort: number, path: string): Promise<{ reachable: boo
   }
 }
 
-/** Polls a node's `/info` endpoint and extracts the real, confirmed fields (see PLAN.md "Spike
- * attempt #7 result" — `protocol_version` is a top-level field, distinct from the unrelated
- * `info.ledger.version`, which is the ledger header's own internal XDR version). */
+/** Polls a node's `/info` endpoint and extracts the real, confirmed fields — verified directly
+ * against stellar-core's own source (`ApplicationImpl.cpp`'s `getJsonInfo`), not inferred:
+ *
+ *   info["protocol_version"] = getConfig().LEDGER_PROTOCOL_VERSION;   // the RUNNING BINARY's
+ *                                                                     // own configured max
+ *                                                                     // version — changes the
+ *                                                                     // instant a node restarts
+ *                                                                     // on a new image, before
+ *                                                                     // any consensus happens.
+ *   info["ledger"]["version"] = lcl.header.ledgerVersion;             // the REAL, consensus-
+ *                                                                     // agreed protocol version
+ *                                                                     // of the actual last
+ *                                                                     // closed ledger.
+ *
+ * An earlier version of this code read the top-level `protocol_version` field, believing it
+ * reflected real network state — confirmed wrong live (see PLAN.md "Verify-scenarios attempt
+ * #2"): it changed instantly on a bare restart, while `ledger.num`/`ledger.hash` and quorum
+ * health were still catching up, proving no real consensus had occurred yet. `ledger.version`
+ * is the field that actually answers "has this ledger genuinely adopted the new protocol." */
 export async function getInfoSnapshot(node: string, hostPort: number): Promise<NodeSnapshot> {
   const { reachable, raw } = await httpGet(hostPort, 'info');
   const timestampMs = Date.now();
@@ -42,7 +58,7 @@ export async function getInfoSnapshot(node: string, hostPort: number): Promise<N
     timestampMs,
     reachable: true,
     state: typeof info.state === 'string' ? info.state : null,
-    protocolVersion: typeof info.protocol_version === 'number' ? info.protocol_version : null,
+    protocolVersion: typeof ledger?.version === 'number' ? ledger.version : null,
     ledgerNum: typeof ledger?.num === 'number' ? ledger.num : null,
     quorumAgree: typeof qset?.agree === 'number' ? qset.agree : null,
     quorumNodeCount: typeof transitive?.node_count === 'number' ? transitive.node_count : null,

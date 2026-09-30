@@ -153,11 +153,17 @@ run_a_trial() {
     http_get "$port" info > "$FIXTURES_DIR/runA-t${trial}-${label}-info-final.json"
   done
 
-  # "protocol_version" is the REAL, confirmed field name (see PLAN.md "Spike attempt #7
-  # result") — a top-level field under .info, distinct from the unrelated .info.ledger.version
-  # (the ledger header's own internal XDR version, not the network's protocol version). An
-  # earlier heuristic guessed "ledgerVersion"/"version"/"protocolVersion" and never matched
-  # anything, which is why prior trials all showed INCONCLUSIVE instead of PASS or BROKE.
+  # CORRECTION (see PLAN.md "Verify-scenarios attempt #2"): "protocol_version" is real and
+  # present, but it is NOT the network's real, consensus-agreed protocol version — per
+  # stellar-core's own source (ApplicationImpl.cpp), it's the running BINARY's own configured
+  # max, which changes the instant a node restarts on a new image, before any real consensus.
+  # The real field is .info.ledger.version. This spike script's own PASS conclusion for "all 3
+  # nodes reach the new protocol" was reached via the wrong field — the underlying feasibility
+  # finding (a 3-node network genuinely boots, syncs, and reaches real SCP consensus) is
+  # unaffected, since that was never in question here, but this specific upgrade-detection
+  # check was not actually verifying what it claimed to. The Phase B product
+  # (src/driver/http-client.ts) uses the corrected field; this spike script was not re-run to
+  # match, since its job (prove feasibility) is already done and this doesn't change that.
   local all_upgraded=1
   for label_port in "node1:11626" "node2:11627" "node3:11628"; do
     local label="${label_port%%:*}"

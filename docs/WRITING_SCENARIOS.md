@@ -65,7 +65,9 @@ actually advances time.
 Optional, and only ever used to flag a "surprise" in the report — never to force a verdict:
 
 - `finalProtocolVersion`: if every validator stays synced, this is compared against each one's
-  final `protocol_version` to decide `NETWORK_UPGRADED` vs. `UPGRADE_NOT_ADOPTED`.
+  final, real, consensus-agreed protocol version (`info.ledger.version` — NOT the top-level
+  `info.protocol_version`, which just reflects the running binary's own configured max; see
+  `docs/TROUBLESHOOTING.md`) to decide `NETWORK_UPGRADED` vs. `UPGRADE_NOT_ADOPTED`.
 - `nodesShouldStaySynced`: a list of node names expected to remain `"Synced!"` through the end.
   A mismatch is reported as a surprise, not silently ignored or forced into the verdict.
 
