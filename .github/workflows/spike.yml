@@ -1,0 +1,37 @@
+name: Feasibility spike
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  spike:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull stellar-core images
+        run: |
+          docker pull stellar/stellar-core:28
+          docker pull stellar/stellar-core:29
+
+      - name: Run feasibility spike
+        run: |
+          chmod +x spike/run-spike.sh spike/generate-configs.sh
+          spike/run-spike.sh
+
+      - name: Write SPIKE.md to job summary
+        if: always()
+        run: cat spike/SPIKE.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload spike results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spike-results
+          path: |
+            spike/SPIKE.md
+            spike/fixtures/
+          retention-days: 30

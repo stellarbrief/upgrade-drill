@@ -1,0 +1,56 @@
+# Feasibility spike topology: 3 stellar-core validators on a private Docker network.
+# Image tags are per-node env vars (default 29) so the run script can restart node3 on an
+# older image without touching this file — see PLAN.md "Phase A" and run-spike.sh.
+name: upgrade-drill-spike
+
+services:
+  node1:
+    image: stellar/stellar-core:${NODE1_TAG:-29}
+    hostname: node1
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
+    volumes:
+      - ./generated/node1.cfg:/config/stellar-core.cfg:ro
+      - node1-data:/data
+    ports:
+      - "11626:11626"
+    networks:
+      - drill
+
+  node2:
+    image: stellar/stellar-core:${NODE2_TAG:-29}
+    hostname: node2
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
+    volumes:
+      - ./generated/node2.cfg:/config/stellar-core.cfg:ro
+      - node2-data:/data
+    ports:
+      - "11627:11626"
+    networks:
+      - drill
+
+  node3:
+    image: stellar/stellar-core:${NODE3_TAG:-29}
+    hostname: node3
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
+    volumes:
+      - ./generated/node3.cfg:/config/stellar-core.cfg:ro
+      - node3-data:/data
+    ports:
+      - "11628:11626"
+    networks:
+      - drill
+
+networks:
+  drill:
+    name: upgrade-drill-spike-net
+
+volumes:
+  node1-data:
+  node2-data:
+  node3-data:
