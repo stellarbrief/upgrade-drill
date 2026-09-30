@@ -1,0 +1,47 @@
+name: Verify all scenarios
+
+# Runs every built-in scenario for real, end to end, via the actual CLI (not just happy-path,
+# which is all the main CI's integration job covers per spec). Manual-only rather than on every
+# push — each scenario takes several minutes, and this is meant for verifying scenario changes
+# specifically, not routine CI. Trigger from the Actions tab or `gh workflow run`.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario: [happy-path, one-laggard, quorum-breaker, mismatched-vote]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: docker pull stellar/stellar-core:28
+      - run: docker pull stellar/stellar-core:29
+      - name: Run ${{ matrix.scenario }}
+        run: |
+          node dist/cli/index.js run "scenarios/${{ matrix.scenario }}.yml" \
+            --markdown-out "${{ matrix.scenario }}-report.md" \
+            --json-out "${{ matrix.scenario }}-report.json"
+      - name: Write report to job summary
+        if: always()
+        run: |
+          if [ -f "${{ matrix.scenario }}-report.md" ]; then
+            cat "${{ matrix.scenario }}-report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.scenario }}-report
+          path: |
+            ${{ matrix.scenario }}-report.md
+            ${{ matrix.scenario }}-report.json
+          retention-days: 30
