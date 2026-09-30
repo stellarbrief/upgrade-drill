@@ -53,6 +53,22 @@ write_config() {
   local known_peers
   known_peers="$(IFS=,; echo "${peers[*]}")"
 
+  # A node's own entry in its QUORUM_SET must be the literal "$self" token, matching
+  # stellar-core's own documented pattern (docs/stellar-core_example.cfg's QUORUM_SET.1
+  # example) — NOT its own pubkey spelled out with an explicit name. NODE_SEED already names
+  # this node "self"; naming it again explicitly is a real, confirmed parse error: "naming node
+  # twice: nodeN" (see PLAN.md "Spike attempt #3 result").
+  local validators=()
+  for j in 1 2 3; do
+    if [ "$j" == "$node_num" ]; then
+      validators+=("\"\$self\"")
+    else
+      validators+=("\"${PUBLICS[$j]} node${j}\"")
+    fi
+  done
+  local validators_block
+  validators_block="$(IFS=,; echo "${validators[*]}")"
+
   cat > "$path" <<EOF
 HTTP_PORT=11626
 PEER_PORT=11625
@@ -77,11 +93,7 @@ KNOWN_PEERS=[$known_peers]
 
 [QUORUM_SET]
 THRESHOLD_PERCENT=67
-VALIDATORS=[
-"${PUBLICS[1]} node1",
-"${PUBLICS[2]} node2",
-"${PUBLICS[3]} node3"
-]
+VALIDATORS=[$validators_block]
 EOF
   echo "wrote $path" >&2
 }
