@@ -30,9 +30,9 @@ services:
     depends_on:
       init-node1:
         condition: service_completed_successfully
-    entrypoint: ["/bin/sh", "-c"]
+    entrypoint: ["/bin/sh", "-xc"]
     command:
-      - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
+      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
     volumes:
       - ./generated/node1.cfg:/config/stellar-core.cfg:ro
       - node1-data:/data
@@ -47,9 +47,9 @@ services:
     depends_on:
       init-node2:
         condition: service_completed_successfully
-    entrypoint: ["/bin/sh", "-c"]
+    entrypoint: ["/bin/sh", "-xc"]
     command:
-      - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
+      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
     volumes:
       - ./generated/node2.cfg:/config/stellar-core.cfg:ro
       - node2-data:/data
@@ -64,9 +64,9 @@ services:
     depends_on:
       init-node3:
         condition: service_completed_successfully
-    entrypoint: ["/bin/sh", "-c"]
+    entrypoint: ["/bin/sh", "-xc"]
     command:
-      - "stellar-core new-db --conf /config/stellar-core.cfg && exec stellar-core run --conf /config/stellar-core.cfg"
+      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
     volumes:
       - ./generated/node3.cfg:/config/stellar-core.cfg:ro
       - node3-data:/data

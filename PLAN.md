@@ -234,6 +234,39 @@ None of these has been confirmed by real evidence the way the previous three fin
 guessing further here would cross back into the "blind guessing" the spec's stop condition
 exists to prevent. Stopping and reporting to the user rather than attempting a fifth fix.
 
+## Attempt #5: evidence-gathering, not another blind fix (2026-09-30)
+
+The user, asked how to proceed after attempt #4 stopped, chose to keep debugging but only with
+more direct evidence first — not another guess. Before touching any stellar-core config content
+again, this pass only improves what gets observed:
+
+- `docker-compose.yml`'s per-node command now runs both `new-db` and `run` through `stdbuf -oL
+  -eL` (line-buffered stdout/stderr) and explicitly captures and echoes `new-db`'s own exit
+  code before deciding whether to proceed to `run`. Reasoning: attempt #4's containers exited
+  with a clean, signal-free code `1` (not `137`/OOM-kill, not `139`/segfault) yet logged nothing
+  between their last INFO line and the exit — a classic symptom of a process's stdout being
+  fully-buffered (the default when stdout is a pipe, not a TTY) and losing whatever it printed
+  right before an abrupt-but-clean exit. `stdbuf` forces line buffering so a real message, if
+  one exists, should now survive to the log.
+- **Real bug caught while adding this**: the diagnostic shell snippet used bare `$?`/`$c`,
+  which Docker Compose's OWN `$VAR`-style interpolation would have consumed at compose-parse
+  time (before the container's shell ever saw them), most likely mangling the check into
+  something like `[ -eq 0 ]` and breaking in a new, self-inflicted way unrelated to the actual
+  investigation. Caught by remembering Compose does its own env-var substitution pass on
+  command strings, and fixed by escaping every shell-level `$` as `$$` (Compose's documented
+  escape for a literal dollar sign) — verified afterward that the escaped form parses correctly
+  and un-escapes back to a real `$?`/`$c` for the container's shell to evaluate.
+- `run-spike.sh`'s `capture_container_logs` now also runs `docker inspect <container> --format
+  '{{json .State}}'` into a new `*-container-state.json` fixture, capturing the exact exit
+  code, any terminating signal, and the `OOMKilled` flag directly from Docker's own state
+  record — removing any ambiguity about what kind of exit actually happened, rather than
+  inferring it from `compose ps`'s human-readable summary.
+
+This is explicitly NOT "attempt #5 at fixing the crash" — it's improving the evidence available
+for whatever the next real fix turns out to be. If the crash message now surfaces, act on it
+directly. If it still doesn't, that's a stronger signal (ruling out buffering) worth reporting
+back rather than guessing again.
+
 1. This `PLAN.md`.
 2. `spike/` — real Docker Compose file, 3 generated `stellar-core` configs (2 on `:29`, 1 on
    `:28` for the mixed-version item 4 of the spike), a driver script that boots them, polls

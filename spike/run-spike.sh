@@ -41,6 +41,15 @@ capture_container_logs() {
     > "$FIXTURES_DIR/${label}-container-log.txt" 2>&1 || true
   docker compose -f "$SPIKE_DIR/docker-compose.yml" ps -a \
     > "$FIXTURES_DIR/${label}-compose-ps.txt" 2>&1 || true
+  # Full container state (OOMKilled flag, exact exit code / terminating signal) — rules in or
+  # out a kill signal vs. a clean application exit, which the plain exit code alone is
+  # ambiguous about. See PLAN.md "Spike attempt #5" for why this was added.
+  local cid
+  cid="$(docker compose -f "$SPIKE_DIR/docker-compose.yml" ps -a -q "$svc" 2>/dev/null | head -1)"
+  if [ -n "$cid" ]; then
+    docker inspect "$cid" --format '{{json .State}}' \
+      > "$FIXTURES_DIR/${label}-container-state.json" 2>&1 || true
+  fi
 }
 
 wait_for_synced() {
