@@ -311,6 +311,38 @@ known-good pattern can't reach a synced state in this CI environment, the multi-
 skipped rather than spending ~13 more minutes reproducing an already-explained failure. Real
 outcome will be read from the next CI run and recorded here, not assumed.
 
+**Real result**: the sanity check PASSED — a single `RUN_STANDALONE=true` node reached a
+synced-looking state within 60s in this exact CI environment. This conclusively rules out
+anything environmental (Docker itself, the image, `PUBLIC_HTTP_PORT`, volume permissions all
+confirmed working) and isolates the problem specifically to the multi-node configuration
+(`RUN_STANDALONE=false` + 3-validator `QUORUM_SET` + `KNOWN_PEERS`). The multi-node nodes still
+died identically (~275ms lifetime, `ExitCode:1`, no log output) — and notably, the sanity node's
+OWN log also went silent after its `Using QUORUM_SET` line, proving silence-after-config-load is
+NOT itself a crash signal; the real differentiator is that the sanity node stayed alive and the
+multi-node ones didn't.
+
+## Attempt #7: history archive (2026-09-30)
+
+Comparing the working sanity config against the failing multi-node ones, the most significant
+real difference (beyond `RUN_STANDALONE`) is that the multi-node configs have no `[HISTORY]`
+section at all. Checked `stellar-core`'s own `docs/history.md`, which states directly: "For
+normal operations, a stellar-core process should always be configured with one or more history
+archives" — `RUN_STANDALONE=true` test nodes plausibly skip this requirement; a "normal
+operation" (`RUN_STANDALONE=false`) node may not. The docs also reveal a real, previously-unknown
+requirement: "any archive you *put* to you must run `stellar-core new-hist <historyarchive>`
+once before you start" — a second initialization step, alongside `new-db`, that this spike had
+never run at all.
+
+**Fix applied**: added a `[HISTORY.local]` section to each node's config, using the exact
+`get`/`put`/`mkdir` template syntax copied from `docs/stellar-core_example.cfg`'s own
+`[HISTORY.local]` example (`cp`-based, pointed at each node's own `/data/history` directory).
+Added `stellar-core new-hist local --conf ...` to `docker-compose.yml`'s command chain, between
+`new-db` and `run`, with its own exit-code check and echo (mirroring the existing `new-db`
+pattern) so a failure here is visible too. Verified the config template renders correctly via a
+local dry run with fake keys before pushing.
+
+## Phase A build order (this session)
+
 1. This `PLAN.md`.
 2. `spike/` — real Docker Compose file, 3 generated `stellar-core` configs (2 on `:29`, 1 on
    `:28` for the mixed-version item 4 of the spike), a driver script that boots them, polls

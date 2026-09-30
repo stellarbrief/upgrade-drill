@@ -32,7 +32,7 @@ services:
         condition: service_completed_successfully
     entrypoint: ["/bin/sh", "-xc"]
     command:
-      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
+      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg; h=$$?; echo \"NEWHIST_EXIT_CODE=$$h\"; [ $$h -eq 0 ] || exit $$h; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
     volumes:
       - ./generated/node1.cfg:/config/stellar-core.cfg:ro
       - node1-data:/data
@@ -49,7 +49,7 @@ services:
         condition: service_completed_successfully
     entrypoint: ["/bin/sh", "-xc"]
     command:
-      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
+      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg; h=$$?; echo \"NEWHIST_EXIT_CODE=$$h\"; [ $$h -eq 0 ] || exit $$h; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
     volumes:
       - ./generated/node2.cfg:/config/stellar-core.cfg:ro
       - node2-data:/data
@@ -66,7 +66,7 @@ services:
         condition: service_completed_successfully
     entrypoint: ["/bin/sh", "-xc"]
     command:
-      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
+      - "stdbuf -oL -eL stellar-core new-db --conf /config/stellar-core.cfg; c=$$?; echo \"NEWDB_EXIT_CODE=$$c\"; [ $$c -eq 0 ] || exit $$c; stdbuf -oL -eL stellar-core new-hist local --conf /config/stellar-core.cfg; h=$$?; echo \"NEWHIST_EXIT_CODE=$$h\"; [ $$h -eq 0 ] || exit $$h; exec stdbuf -oL -eL stellar-core run --conf /config/stellar-core.cfg"
     volumes:
       - ./generated/node3.cfg:/config/stellar-core.cfg:ro
       - node3-data:/data

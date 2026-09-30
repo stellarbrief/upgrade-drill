@@ -94,6 +94,17 @@ KNOWN_PEERS=[$known_peers]
 [QUORUM_SET]
 THRESHOLD_PERCENT=67
 VALIDATORS=[$validators_block]
+
+# A real, documented stellar-core requirement this config was missing entirely (see PLAN.md
+# "Attempt #7"): "For normal operations, a stellar-core process should always be configured
+# with one or more history archives" (docs/history.md). The exact get/put/mkdir template
+# syntax below is copied from docs/stellar-core_example.cfg's own [HISTORY.local] example.
+# Archives you *put* to must be initialized once via \`stellar-core new-hist <name>\` before
+# \`run\` — see docker-compose.yml's command chain.
+[HISTORY.local]
+get="cp /data/history/{0} {1}"
+put="cp {0} /data/history/{1}"
+mkdir="mkdir -p /data/history/{0}"
 EOF
   echo "wrote $path" >&2
 }
