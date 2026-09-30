@@ -1,0 +1,39 @@
+# 5 validators (not 3 like the other scenarios) so that losing a minority still leaves the
+# required majority: THRESHOLD_PERCENT=67 with 5 validators requires ceil(5*0.67)=4 of 5 to
+# agree. Stopping 2 nodes leaves only 3 alive — below the 4 required — which should stall
+# REGULAR ledger closing entirely, not just the upgrade vote. This is what makes it a distinct
+# dynamic from one-laggard (which only affects the upgrade vote specifically, since ANY
+# disagreement already blocks a 3-of-3 quorum from reaching t=3, as observed live in the
+# spike's Run B).
+name: quorum-breaker
+description: Enough validators go down that the remaining ones can no longer reach quorum at all.
+
+topology:
+  validators:
+    - name: node1
+      image: "29"
+    - name: node2
+      image: "29"
+    - name: node3
+      image: "29"
+    - name: node4
+      image: "29"
+    - name: node5
+      image: "29"
+  quorumThresholdPercent: 67
+
+timeline:
+  - at: 0
+    action: { type: wait, seconds: 90 }
+  - at: 90
+    action: { type: stop-node, node: node4 }
+  - at: 90
+    action: { type: stop-node, node: node5 }
+  - at: 90
+    action: { type: wait, seconds: 120 }
+
+observations:
+  intervalSeconds: 10
+
+expectations:
+  nodesShouldStaySynced: []

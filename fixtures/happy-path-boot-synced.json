@@ -1,0 +1,37 @@
+{
+   "info" : {
+      "build" : "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+      "ledger" : {
+         "age" : 5,
+         "baseFee" : 100,
+         "baseReserve" : 100000000,
+         "closeTime" : 1790787793,
+         "hash" : "6abf3d5c53a4c321fccbebeac7d74f9b6e7e05874eb898485c57b6a9955148f3",
+         "maxTxSetSize" : 100,
+         "num" : 2,
+         "version" : 0
+      },
+      "network" : "upgrade-drill spike network ; 2026-09-30",
+      "peers" : {
+         "authenticated_count" : 1,
+         "pending_count" : 0
+      },
+      "protocol_version" : 28,
+      "quorum" : {
+         "maybe_dead_nodes" : [],
+         "node" : "self",
+         "qset" : {
+            "cost" : 0,
+            "lag_ms" : null
+         },
+         "transitive" : {
+            "critical" : null,
+            "intersection" : true,
+            "last_check_ledger" : 2,
+            "node_count" : 3
+         }
+      },
+      "startedOn" : "2026-09-30T17:03:13Z",
+      "state" : "Synced!"
+   }
+}

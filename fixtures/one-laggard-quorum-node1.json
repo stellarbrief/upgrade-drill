@@ -1,0 +1,80 @@
+{
+   "maybe_dead_nodes" : [],
+   "node" : "self",
+   "qset" : {
+      "agree" : [ "node3", "node2", "self" ],
+      "cost" : {
+         "13" : {
+            "node2" : 4684,
+            "node3" : 3796
+         },
+         "14" : {
+            "node2" : 3796,
+            "node3" : 3796
+         },
+         "15" : {
+            "node2" : 3796,
+            "node3" : 3796
+         },
+         "16" : {
+            "node2" : 3796,
+            "node3" : 3796
+         },
+         "17" : {
+            "node2" : 3796,
+            "node3" : 3796
+         },
+         "18" : {
+            "node2" : 4684,
+            "node3" : 3796
+         },
+         "19" : {
+            "node2" : 4684,
+            "node3" : 3796
+         },
+         "20" : {
+            "node2" : 4684,
+            "node3" : 3796
+         },
+         "21" : {
+            "node2" : 4684,
+            "node3" : 3796
+         },
+         "22" : {
+            "node2" : 3796,
+            "node3" : 3796
+         },
+         "23" : {
+            "node2" : 4684,
+            "node3" : 3796
+         },
+         "24" : {
+            "node2" : 3796,
+            "node3" : 3796
+         }
+      },
+      "delayed" : null,
+      "disagree" : null,
+      "fail_at" : 1,
+      "fail_with" : [ "node3" ],
+      "hash" : "bc9d5b",
+      "lag_ms" : {
+         "node2" : 3,
+         "node3" : 3
+      },
+      "ledger" : 24,
+      "missing" : null,
+      "phase" : "EXTERNALIZE",
+      "validated" : true,
+      "value" : {
+         "t" : 3,
+         "v" : [ "node3", "node2", "self" ]
+      }
+   },
+   "transitive" : {
+      "critical" : null,
+      "intersection" : true,
+      "last_check_ledger" : 3,
+      "node_count" : 3
+   }
+}

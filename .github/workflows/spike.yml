@@ -1,8 +1,10 @@
 name: Feasibility spike
 
+# Phase A's spike already passed (see PLAN.md) — this now runs on demand only, so it doesn't
+# spend ~15 minutes of CI time re-proving something already proven on every push to Phase B.
+# Re-run manually (Actions tab > Feasibility spike > Run workflow) if the spike infrastructure
+# itself changes and needs re-verifying.
 on:
-  push:
-    branches: [main]
   workflow_dispatch: {}
 
 jobs:

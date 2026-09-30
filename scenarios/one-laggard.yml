@@ -1,0 +1,43 @@
+# Two of three validators upgrade their binaries and vote; the third is left on the old
+# version and never votes — a real operator who missed the upgrade window. Proven live in the
+# feasibility spike's "Run B" (see ../PLAN.md and ../fixtures/one-laggard-*.json): the laggard
+# stayed fully synced and quorum-agreeing rather than halting outright, which is itself a
+# real, worthwhile finding for operators to see for themselves, not assumed in advance.
+name: one-laggard
+description: One validator misses the upgrade vote entirely while the other two proceed.
+
+topology:
+  validators:
+    - name: node1
+      image: "28"
+    - name: node2
+      image: "28"
+    - name: node3
+      image: "28"
+  quorumThresholdPercent: 67
+
+timeline:
+  - at: 0
+    action: { type: wait, seconds: 90 }
+  - at: 90
+    action: { type: start-node, node: node1, image: "29" }
+  - at: 90
+    action: { type: start-node, node: node2, image: "29" }
+  # node3 deliberately never restarted — it stays on the older binary throughout.
+  - at: 90
+    action: { type: wait, seconds: 90 }
+  - at: 180
+    action:
+      type: set-upgrade
+      nodes: [node1, node2]
+      protocolVersion: 29
+      upgradeDelaySeconds: 45
+  # node3 deliberately never sent an upgrade vote either — a real lagging operator wouldn't.
+  - at: 180
+    action: { type: wait, seconds: 120 }
+
+observations:
+  intervalSeconds: 10
+
+expectations:
+  nodesShouldStaySynced: [node1, node2, node3]

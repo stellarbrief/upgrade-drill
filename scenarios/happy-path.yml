@@ -1,0 +1,43 @@
+# All validators start on the older protocol, get their binaries swapped (data preserved, per
+# real operator practice), and all vote for the same upgrade at the same time. Expect all three
+# to end up on the target protocol version. This is the exact topology and timing proven live
+# in the feasibility spike's "Run A" (see ../PLAN.md and ../fixtures/happy-path-*.json).
+name: happy-path
+description: All validators upgrade together and adopt the new protocol version.
+
+topology:
+  validators:
+    - name: node1
+      image: "28"
+    - name: node2
+      image: "28"
+    - name: node3
+      image: "28"
+  quorumThresholdPercent: 67
+
+timeline:
+  - at: 0
+    action: { type: wait, seconds: 90 }
+  - at: 90
+    action: { type: start-node, node: node1, image: "29" }
+  - at: 90
+    action: { type: start-node, node: node2, image: "29" }
+  - at: 90
+    action: { type: start-node, node: node3, image: "29" }
+  - at: 90
+    action: { type: wait, seconds: 90 }
+  - at: 180
+    action:
+      type: set-upgrade
+      nodes: [node1, node2, node3]
+      protocolVersion: 29
+      upgradeDelaySeconds: 45
+  - at: 180
+    action: { type: wait, seconds: 90 }
+
+observations:
+  intervalSeconds: 10
+
+expectations:
+  finalProtocolVersion: 29
+  nodesShouldStaySynced: [node1, node2, node3]

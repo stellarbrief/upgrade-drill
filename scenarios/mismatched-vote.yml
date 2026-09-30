@@ -1,0 +1,51 @@
+# All three validators stay up and reachable the whole time — no laggard, no stopped node.
+# The only difference from happy-path is that node3 is armed with a DIFFERENT scheduled
+# upgrade time than node1/node2 (via a separate set-upgrade action with a longer
+# upgradeDelaySeconds). Per stellar-core's own documented rule (docs/versioning.md, quoted in
+# ../PLAN.md "Verified facts"): a node drops an upgrade step whose value differs from its own
+# scheduled setting — so the quorum should be unable to agree on one shared value, and the
+# upgrade should not be adopted by anyone, even though every node stays healthy throughout.
+name: mismatched-vote
+description: Validators disagree on exactly when to apply the same upgrade, so it never gets adopted.
+
+topology:
+  validators:
+    - name: node1
+      image: "28"
+    - name: node2
+      image: "28"
+    - name: node3
+      image: "28"
+  quorumThresholdPercent: 67
+
+timeline:
+  - at: 0
+    action: { type: wait, seconds: 90 }
+  - at: 90
+    action: { type: start-node, node: node1, image: "29" }
+  - at: 90
+    action: { type: start-node, node: node2, image: "29" }
+  - at: 90
+    action: { type: start-node, node: node3, image: "29" }
+  - at: 90
+    action: { type: wait, seconds: 90 }
+  - at: 180
+    action:
+      type: set-upgrade
+      nodes: [node1, node2]
+      protocolVersion: 29
+      upgradeDelaySeconds: 45
+  - at: 180
+    action:
+      type: set-upgrade
+      nodes: [node3]
+      protocolVersion: 29
+      upgradeDelaySeconds: 120
+  - at: 180
+    action: { type: wait, seconds: 150 }
+
+observations:
+  intervalSeconds: 10
+
+expectations:
+  nodesShouldStaySynced: [node1, node2, node3]
