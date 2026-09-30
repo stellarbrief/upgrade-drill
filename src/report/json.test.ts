@@ -19,8 +19,14 @@ function report(overrides: Partial<DrillReport> = {}): DrillReport {
 describe('toJsonReport', () => {
   it('round-trips through JSON.stringify/parse without losing data', () => {
     const parsed = JSON.parse(JSON.stringify(toJsonReport(report())));
-    expect(parsed.schemaVersion).toBe(1);
+    expect(parsed.schemaVersion).toBe(2);
     expect(parsed.verdict).toBe('NETWORK_UPGRADED');
+  });
+
+  it('includes raw snapshots (schema v2) so a real investigation never has to guess field shapes', () => {
+    const rawSnapshot = { node: 'node1', timestampMs: 1, reachable: true, state: 'Synced!', protocolVersion: 29, ledgerNum: 5, quorumAgree: 3, quorumNodeCount: 3, raw: { info: { status: ['Armed'] } } };
+    const jsonReport = toJsonReport(report({ snapshots: [rawSnapshot] }));
+    expect(jsonReport.snapshots).toEqual([rawSnapshot]);
   });
 
   it('includes the Mainnet coverage note', () => {

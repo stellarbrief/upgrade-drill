@@ -515,6 +515,24 @@ scenario. If `protocol_version` still climbs to 29 with zero votes ever fired, t
 proves the hypothesis. Real result pending — read it before drawing any conclusion or making
 any further design change, per this whole project's own established discipline.
 
+**Control test result: CONFIRMED.** Even with zero `set-upgrade` calls ever fired, node1's
+`protocol_version` still jumped 28→29 at the identical +91s mark seen in every other scenario.
+This rules out the vote as the driver, decisively — not a guess.
+
+**Next real question, not yet answered**: WHY does restarting onto a newer binary auto-upgrade
+the ledger? Two live hypotheses, neither confirmed: (a) some automatic self-nomination behavior
+in the newer binary once all quorum-visible nodes are capability-compatible, or (b) the vote
+isn't literally required because `upgradeDelaySeconds` in every scenario so far (45s+) meant
+the vote — even if it WAS the real driver — would apply well after t=91s anyway, i.e., the
+control test proves the vote isn't NECESSARY, but doesn't yet prove what specifically IS
+happening. The JSON report never included raw `info` responses at all (a real gap — added in
+schema v2, `src/report/json.ts`, since investigating this needed exactly the field the report
+was stripping out: `info.status`, which the original spike's real Run B data showed carries an
+`"Armed with network upgrades: ..."` message when a vote IS registered). Re-running the same
+control scenario with the fixed report will show whether that `status` field appears even
+without any vote — if it does, something is self-arming; if it never appears, the upgrade is
+happening through a completely different path we haven't identified yet.
+
 ## Safety rules (apply throughout, spike and full product alike)
 
 - Local only — never connects to Mainnet, Testnet, or any real network. Every run generates
