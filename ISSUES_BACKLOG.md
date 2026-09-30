@@ -50,12 +50,13 @@ maintainers actually needed (if any) building this repo.
 - [ ] A short "Known environment quirks" section added
 - Suggested files: `CONTRIBUTING.md`
 
-### 8. Rename `NodeSnapshot.raw` field usage to be more discoverable in the JSON report
-The JSON report currently omits raw per-snapshot HTTP responses (only `DrillReport.snapshots`
-has them, and `toJsonReport` doesn't expose it). Either add a `--include-raw` flag to include
-them or document clearly why they're left out.
-- [ ] Either raw snapshots become opt-in in the JSON report, or a doc comment explains why not
-- Suggested files: `src/report/json.ts`
+### 8. Render "protocol version 0" more clearly in reports
+A validator that never adopted any upgrade correctly reports `finalProtocolVersion: 0` (real,
+valid — genesis private networks start at ledger protocol 0, per `docs/TROUBLESHOOTING.md`) but
+this reads as confusing or error-like to a first-time user rather than "still at genesis."
+- [ ] Markdown/JSON reports render `0` with an explicit "(genesis, never upgraded)" label
+- [ ] Unit test in `src/report/markdown.test.ts` covering the new label
+- Suggested files: `src/report/markdown.ts`, `src/report/json.ts`
 
 ## Medium (8)
 

@@ -540,6 +540,55 @@ control scenario with the fixed report will show whether that `status` field app
 without any vote — if it does, something is self-arming; if it never appears, the upgrade is
 happening through a completely different path we haven't identified yet.
 
+## Resolution: the fix is correct, and it revealed why (2026-09-30)
+
+Fixed `src/driver/http-client.ts` to read `info.ledger.version` (verified directly against
+stellar-core's own `ApplicationImpl.cpp` source) instead of the top-level `info.protocol_version`
+(the running binary's own configured max, not real network state). Re-ran the real `happy-path`
+integration test and all four `verify-scenarios` jobs with the fix, live, on real Docker.
+
+**Real results, all four now coherent and correct**:
+
+| Scenario | Verdict | Real `ledger.version` outcome |
+| --- | --- | --- |
+| `happy-path` | `NETWORK_UPGRADED` | 0 → 29 |
+| `one-laggard` | `UPGRADE_NOT_ADOPTED` | stuck at 0 |
+| `quorum-breaker` | `NETWORK_STALLED` | stuck at 0, nodes never synced |
+| `mismatched-vote` | `UPGRADE_NOT_ADOPTED` | stuck at 0 |
+
+**The missing piece that makes this all make sense**: the Docker image tag (`28`/`29`) is the
+`stellar-core` software RELEASE version — it has nothing to do with the ledger's actual protocol
+version. A fresh genesis private network starts at ledger protocol **0** regardless of which
+binary is running, and only advances via a real, successful upgrade vote reaching the configured
+quorum threshold. This explains everything observed across every earlier attempt:
+
+- `happy-path` genuinely climbs 0 → 29 because all 3 validators vote for the same version at the
+  same scheduled time, and the vote reaches the required 3-of-3 threshold (`THRESHOLD_PERCENT=67`
+  with exactly 3 validators rounds up to requiring all 3 — see `docs/WRITING_SCENARIOS.md`).
+- `one-laggard` stays at genesis 0 forever: node3 never votes, so 3-of-3 can never be reached,
+  and the network can't adopt ANY protocol upgrade at all — not "upgrades to 28 but not 29," but
+  never leaves 0. This is the real, correct, and more interesting finding than originally
+  assumed.
+- `mismatched-vote` also stays at 0: even though all three nodes are eventually armed with an
+  upgrade request, node3's own scheduled time (900s) never arrives within the drill, so the
+  quorum can never agree on one shared value in time.
+- `quorum-breaker` was never about protocol versions at all — stopping 2-of-5 validators breaks
+  ordinary ledger-closing itself, independent of any upgrade.
+
+This means `set-upgrade` was never inert — the earlier "no-vote control test" was comparing
+against the WRONG field (`protocol_version`, which changes on any bare restart regardless of
+votes) and drew a false conclusion from it. With the correct field, the control test's real
+implication is actually: **a bare restart alone does nothing to `ledger.version`** — only a real,
+successfully-adopted vote does. All four built-in scenarios now demonstrate exactly the dynamic
+each was designed to, confirmed live, not assumed.
+
+**Follow-up**: the JSON/Markdown reports currently show a final protocol version of `0` for
+"never upgraded" cases, which reads as confusing/error-like to a first-time user rather than
+"this is the real, valid genesis version." Worth a small follow-up (`docs/TROUBLESHOOTING.md`
+already explains the underlying field; consider whether the report itself should render `0` as
+something like "0 (genesis, never upgraded)" for clarity — tracked as a possible
+`ISSUES_BACKLOG.md` addition rather than blocking this finding).
+
 ## Safety rules (apply throughout, spike and full product alike)
 
 - Local only — never connects to Mainnet, Testnet, or any real network. Every run generates
