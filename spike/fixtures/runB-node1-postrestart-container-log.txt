@@ -1,0 +1,14 @@
+node1-1  | Warning: running non-release version stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649) of stellar-core
+node1-1  | 2026-09-30T15:38:48.212 [default INFO] Config from /config/stellar-core.cfg
+node1-1  | 2026-09-30T15:38:48.213 [default INFO] Using QUORUM_SET: {
+node1-1  |    "t" : 3,
+node1-1  |    "v" : [ "self", "node2", "node3" ]
+node1-1  | }
+node1-1  | 
+node1-1  | Warning: running non-release version stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649) of stellar-core
+node1-1  | 2026-09-30T15:38:48.247 [default INFO] Config from /config/stellar-core.cfg
+node1-1  | 2026-09-30T15:38:48.248 [default INFO] Using QUORUM_SET: {
+node1-1  |    "t" : 3,
+node1-1  |    "v" : [ "self", "node2", "node3" ]
+node1-1  | }
+node1-1  | 

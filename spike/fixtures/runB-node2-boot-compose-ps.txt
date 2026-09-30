@@ -1,0 +1,7 @@
+NAME                               IMAGE                     COMMAND                  SERVICE      CREATED         STATUS                     PORTS
+upgrade-drill-spike-init-node1-1   alpine:3.20               "sh -c 'mkdir -p /da…"   init-node1   3 minutes ago   Exited (0) 3 minutes ago   
+upgrade-drill-spike-init-node2-1   alpine:3.20               "sh -c 'mkdir -p /da…"   init-node2   3 minutes ago   Exited (0) 3 minutes ago   
+upgrade-drill-spike-init-node3-1   alpine:3.20               "sh -c 'mkdir -p /da…"   init-node3   3 minutes ago   Exited (0) 3 minutes ago   
+upgrade-drill-spike-node1-1        stellar/stellar-core:28   "/bin/sh -c 'stellar…"   node1        3 minutes ago   Exited (1) 3 minutes ago   
+upgrade-drill-spike-node2-1        stellar/stellar-core:28   "/bin/sh -c 'stellar…"   node2        3 minutes ago   Exited (1) 3 minutes ago   
+upgrade-drill-spike-node3-1        stellar/stellar-core:28   "/bin/sh -c 'stellar…"   node3        3 minutes ago   Exited (1) 3 minutes ago   

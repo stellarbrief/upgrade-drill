@@ -198,7 +198,41 @@ verified by a local dry-run against fake keys before pushing (real output confir
 exactly the documented pattern for all three nodes). If this ALSO fails, that really is where
 this stops — no attempt #5 — and the real logs get reported to the user as-is.
 
-## Phase A build order (this session)
+## Spike attempt #4 result (2026-09-30, real CI re-run with the $self fix) — STOPPING HERE
+
+**Real progress, but not passing, and this is where it stops** — per the commitment made after
+attempt #3 and the spec's own stop condition, no attempt #5 is being made without the user's
+direction.
+
+The config parse error is genuinely fixed: all three nodes' logs now show a clean
+`Using QUORUM_SET: { "t" : 3, "v" : [ "self"/"node1", "node2"/"self", "node3" ] }` for both the
+`new-db` and `run` invocations (confirming `new-db` succeeded, since `&&` only lets `run`
+execute after it). But immediately after that second, `run`-side log line, all three containers
+exit with code 1 — confirmed via `docker compose ps -a`: `node1-1`, `node2-1`, `node3-1` all
+show `Exited (1)`. Critically, **no further log line of any kind appears before the exit** — no
+`[default FATAL]`, no error text, nothing. This is a materially different, less diagnosable
+failure than the previous three (which each had a specific, readable error message to act on).
+
+Real, concrete unknowns at this point, none of which have direct evidence yet:
+- Whether `run`'s real error was never logged at all (a crash bypassing the normal FATAL
+  logger — e.g. a raw C++ exception, or a crash during signal handling given `exec` inside the
+  `sh -c "... && exec ..."` wrapper), or whether it WAS logged but not flushed to stdout before
+  the process died (a buffering issue, not a Stellar-specific one).
+- Whether `t:3` (all 3 of 3 required) — note that `THRESHOLD_PERCENT=67` with exactly 3
+  validators rounds UP to require all 3 to agree, not 2, per `stellar-core`'s own documented
+  "defaults to 67 (rounds up)" rule; this is a real, now-confirmed fact worth remembering for
+  Phase B's scenario designs, though it isn't obviously connected to an early crash.
+- Whether the `KNOWN_PEERS` hostnames (`node2:11625` etc.) are resolvable at the exact moment
+  `run` starts — Compose's `depends_on: service_completed_successfully` only guarantees the
+  `init-nodeN` containers finished, not that sibling `nodeN` containers' DNS entries are already
+  live on the `drill` network, though this is normally near-instant in Compose.
+- Whether `UNSAFE_QUORUM=true` + `FAILURE_SAFETY=0` + `RUN_STANDALONE=false` together need an
+  additional config flag this spike hasn't included, that a genuinely fresh (non-example-derived)
+  multi-node private network requires.
+
+None of these has been confirmed by real evidence the way the previous three findings were —
+guessing further here would cross back into the "blind guessing" the spec's stop condition
+exists to prevent. Stopping and reporting to the user rather than attempting a fifth fix.
 
 1. This `PLAN.md`.
 2. `spike/` — real Docker Compose file, 3 generated `stellar-core` configs (2 on `:29`, 1 on
