@@ -56,6 +56,10 @@ report format needs to work within.
 | `NETWORK_STALLED` | No validator ended in a synced state — regular consensus broke, not just the upgrade. |
 | `INCONCLUSIVE` | Not enough real data to classify confidently — never asserted as success. |
 
+Real-run status: `NETWORK_LIVE_WITH_HALTED_NODES` has unit-test coverage only; no built-in
+scenario has produced it against real containers yet. The others have been observed in real
+runs (see the README).
+
 `classifyDrill` (in `src/verdict/engine.ts`) never guesses: if even one declared validator has
 no observation at all, the verdict is `INCONCLUSIVE`, not a guess based on partial data.
 

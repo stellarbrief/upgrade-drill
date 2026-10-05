@@ -33,9 +33,20 @@ npm run build
 node dist/cli/index.js run scenarios/happy-path.yml
 ```
 
-This boots 3 validators, restarts them on a newer protocol version (data preserved, the same
+This boots 3 validators, restarts them on a newer `stellar-core` binary (data preserved, the same
 way a real operator swaps binaries), fires the upgrade vote, and reports the outcome. Takes
 roughly 6-7 minutes for the full scenario.
+
+### Protocol model: read this before interpreting a report
+
+The `image: "28"` / `"29"` values in a scenario are `stellar-core` **software release** tags.
+They are not the ledger's protocol version. A brand-new private network starts at ledger
+protocol **0** whatever binary is running, and only moves when an upgrade vote reaches the
+configured quorum threshold. So a drill rehearses a genesis-to-N upgrade (for example 0 to 29),
+not a Mainnet-style 28 to 29 transition, and a report showing final protocol `0` means "the
+network never adopted any upgrade", not an error. The tool reads the real consensus state from
+each node's `info.ledger.version`; see [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) for
+why `info.protocol_version` is the wrong field.
 
 No Docker? Try `node dist/cli/index.js run scenarios/one-laggard.yml --dry-run` — it generates
 real config files and a Compose file and prints the full timeline plan, using clearly-fake
@@ -47,13 +58,18 @@ actually do before running it for real.
 | Scenario | What it tests |
 | --- | --- |
 | `happy-path` | All validators upgrade together and adopt the new protocol version. |
-| `one-laggard` | One validator misses the vote entirely while the other two proceed. |
+| `one-laggard` | One validator never gets the upgrade vote. With 3 validators at the default 67% threshold, all 3 must agree, so in real runs the whole network stays at genesis protocol 0 (`UPGRADE_NOT_ADOPTED`) while every node stays synced. |
 | `quorum-breaker` | Enough validators go down that the remaining ones can't reach quorum at all — a genuinely different dynamic from `one-laggard`, using 5 validators so a minority loss doesn't already block every vote. |
 | `mismatched-vote` | Validators disagree on exactly when to apply the same upgrade, so it's never adopted, even though every node stays healthy. |
 
 `upgrade-drill list-scenarios` lists these with their file paths. Real captured observations
 from actual runs are in [`fixtures/`](fixtures/) — see
 [`docs/WRITING_SCENARIOS.md`](docs/WRITING_SCENARIOS.md) to write your own.
+
+**Verified by real runs so far:** `NETWORK_UPGRADED` (`happy-path`), `UPGRADE_NOT_ADOPTED`
+(`one-laggard`, `mismatched-vote`), `NETWORK_STALLED` (`quorum-breaker`), and `INCONCLUSIVE`
+(seen while debugging). `NETWORK_LIVE_WITH_HALTED_NODES` is covered by unit tests only; no
+built-in scenario has produced it in a real run yet.
 
 ## What this does not prove
 
@@ -82,11 +98,9 @@ looked like and how to recognize it again.
 See [`ISSUES_BACKLOG.md`](ISSUES_BACKLOG.md) for ~20 scoped, ready-to-pick-up issues, and
 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the fuller design writeup.
 
-## Contributing via Stellar Wave
+## Contributing
 
-This repo is applying to the [Stellar Wave Program](https://docs.drips.network/wave/), where
-maintainers list scoped issues and outside contributors solve them for points. See
-[`CONTRIBUTING.md`](CONTRIBUTING.md) for setup, the PR flow, and how to contribute without
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for setup, the PR flow, and how to contribute without
 Docker.
 
 ## License

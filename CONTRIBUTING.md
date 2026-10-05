@@ -76,8 +76,3 @@ tiers:
   timeline action type, CI improvements.
 - **High**: a complex feature, refactor, or new integration — a new topology backend, a plugin
   system, importing a real validator layout as a topology.
-
-## Contributing via Stellar Wave
-
-This repo is applying to the [Stellar Wave Program](https://docs.drips.network/wave/), where
-maintainers list scoped issues and outside contributors solve them for points.
