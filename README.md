@@ -95,7 +95,7 @@ looked like and how to recognize it again.
 
 ## Roadmap
 
-See [`ISSUES_BACKLOG.md`](ISSUES_BACKLOG.md) for ~20 scoped, ready-to-pick-up issues, and
+See [`ISSUES_BACKLOG.md`](ISSUES_BACKLOG.md) for scoped, ready-to-pick-up issues, and
 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the fuller design writeup.
 
 ## Contributing

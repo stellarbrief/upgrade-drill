@@ -1,162 +1,189 @@
 # Issues backlog
 
-20 scoped issues, ready to post to GitHub. Complexity ratings follow the
-[Stellar Wave Program](https://docs.drips.network/wave/)'s three tiers.
+Candidate issues, each written to be posted to GitHub as-is. Every entry states the current
+state at a specific commit, what to build, how to verify it, and what is out of scope.
+Complexity (Trivial / Medium / High) follows the tiers in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+If you pick one up, comment on the issue first so two people don't build the same thing.
 
-## Trivial (8)
+Audited commit: `3c23b6d`
 
-### 1. Add a `--quiet` flag to suppress the "Running..." startup log line
-`upgrade-drill run` logs `Running "<name>"...` to stderr unconditionally. Add `--quiet` to
-suppress it, for cleaner CI logs when the report itself is the only wanted output.
-- [ ] `--quiet` suppresses the startup line in `src/cli/index.ts`
-- [ ] Markdown/JSON output is unaffected
-- Suggested files: `src/cli/index.ts`
+Most of these need Docker to verify for real. Where an issue can be done and unit-tested without
+Docker, it says so.
 
-### 2. Publish a JSON Schema for scenario YAML files
-Generate a JSON Schema from `ScenarioSchema` (zod has `z.toJSONSchema()`) and commit it, so
-editors can offer autocomplete/validation on scenario files.
-- [ ] `schema/scenario.schema.json` is generated and committed
-- [ ] A script or npm command regenerates it
-- Suggested files: `src/scenario/schema.ts`, new `scripts/generate-schema.ts`
+---
 
-### 3. Add a README badge row (CI status, license)
-- [ ] Badges render correctly on GitHub
-- Suggested files: `README.md`
+### 1. Add a scenario that produces `NETWORK_LIVE_WITH_HALTED_NODES` in a real run
+**Complexity:** Medium
 
-### 4. Improve the INCONCLUSIVE-missing-data message to name what was actually captured
-`classifyDrill`'s missing-data message names which validators have NO observation, but doesn't
-say how many observations WERE captured for the others — useful context when debugging a
-partial run.
-- [ ] Message includes the observation count for validators that DO have data
-- [ ] Existing tests in `src/verdict/engine.test.ts` still pass; add one for the new message
-- Suggested files: `src/verdict/engine.ts`
+**Description**
+The verdict exists and is unit-tested, but no scenario has ever produced it against real
+containers, so we don't know it behaves as designed.
 
-### 5. Add a fifth built-in scenario: a "late-joiner" variant
-A validator that starts stopped, boots up partway through the drill, and catches up to the
-others — exercises a different code path than `one-laggard` (which never restarts the lagging
-node) or `quorum-breaker` (which never restarts anyone).
-- [ ] New `scenarios/late-joiner.yml`, validated by `upgrade-drill validate`
-- [ ] Entry added to `README.md`'s scenario table
-- Suggested files: `scenarios/late-joiner.yml`, `README.md`
+**Current state**
+The four built-in scenarios all use 3 validators except `quorum-breaker` (5). Real runs have
+produced `NETWORK_UPGRADED`, `UPGRADE_NOT_ADOPTED`, `NETWORK_STALLED` and `INCONCLUSIVE`, never
+`NETWORK_LIVE_WITH_HALTED_NODES`. The README and `docs/ARCHITECTURE.md` say so.
 
-### 6. Document the exit codes in `--help` output
-`upgrade-drill run --help` should mention exit codes 0/1/2 inline, not just in the README.
-- [ ] `commander`'s `.addHelpText('after', ...)` used to append the exit code table
-- Suggested files: `src/cli/index.ts`
+**What to build**
+A new scenario under `scenarios/`, for example 5 validators where all upgrade and vote, and one
+is then stopped (`stop-node`) so it is not synced at the end while the other four are. Run it
+for real (the manual `Verify all scenarios` workflow, or locally) and record what actually
+happens. Add the scenario to the workflow matrix and the README table.
 
-### 7. Add a CONTRIBUTING.md note on WSL/Docker Desktop quirks
-Docker Desktop on Windows via WSL2 has known port-binding gotchas; document the one workaround
-maintainers actually needed (if any) building this repo.
-- [ ] A short "Known environment quirks" section added
-- Suggested files: `CONTRIBUTING.md`
+**Acceptance criteria**
+- [ ] `upgrade-drill validate` accepts the scenario.
+- [ ] The real run's verdict and per-node outcome are recorded, even if it is not the verdict you hoped for.
+- [ ] The scenario's `description` states what was observed, not what was expected.
+- [ ] The README's "verified by real runs" list is updated to match.
 
-### 8. Render "protocol version 0" more clearly in reports
-A validator that never adopted any upgrade correctly reports `finalProtocolVersion: 0` (real,
-valid — genesis private networks start at ledger protocol 0, per `docs/TROUBLESHOOTING.md`) but
-this reads as confusing or error-like to a first-time user rather than "still at genesis."
-- [ ] Markdown/JSON reports render `0` with an explicit "(genesis, never upgraded)" label
-- [ ] Unit test in `src/report/markdown.test.ts` covering the new label
-- Suggested files: `src/report/markdown.ts`, `src/report/json.ts`
+**Out of scope**
+Changing the verdict logic in `src/verdict/engine.ts`.
 
-## Medium (8)
+**Verification**
+`node dist/cli/index.js run scenarios/<name>.yml` with Docker, or the `Verify all scenarios` workflow.
 
-### 9. Add an HTML report renderer
-A `toHtml(report: DrillReport): string` alongside `toMarkdown`/`toJson`, styled minimally, for
-attaching to CI artifacts or a GitHub Pages report — a real timeline visualization (not just a
-table) would be especially valuable here.
-- [ ] `src/report/html.ts` with the same "what this does not prove" disclaimer guarantee
-- [ ] Unit tests mirroring `src/report/markdown.test.ts`
-- [ ] `--html-out` flag wired up in the CLI
-- Suggested files: `src/report/html.ts`, `src/cli/index.ts`
+---
 
-### 10. Make the quorum topology support nested/weighted quorum sets
-Currently every validator's `[QUORUM_SET]` lists all others flatly at one `THRESHOLD_PERCENT`.
-Real `stellar-core` supports nested quorum sets (see `docs/stellar-core_example.cfg`'s own
-`[QUORUM_SET.N]` examples) — supporting this would let scenarios model more realistic,
-non-flat topologies.
-- [ ] `topology.quorumStructure` (optional) accepts a nested structure; flat behavior is the default
-- [ ] `render-config.ts` renders real, valid nested `[QUORUM_SET.N]` sections
-- [ ] At least one new scenario using a nested structure
-- Suggested files: `src/scenario/schema.ts`, `src/topology/render-config.ts`
+### 2. Let a drill start from a real protocol version, not genesis 0
+**Complexity:** High
 
-### 11. Verify Docker image pull success explicitly before booting
-`composeUp` currently relies on `docker compose up -d` to implicitly pull missing images. Add
-an explicit `docker pull` step with retries (mirroring the real pattern in
-`stellar/quickstart`'s own `action.yml`, referenced in `upgrade-preflight`'s own
-`ADDING_A_NETWORK_BACKEND.md`) run once up front, for clearer error messages on a flaky pull.
-- [ ] Images pulled with retry-with-backoff before any node starts
-- [ ] Unit test on the retry logic with a mocked `child_process`
-- Suggested files: `src/driver/compose.ts`
+**Description**
+Every drill starts from a fresh network at ledger protocol 0, so it rehearses 0 to N, not the
+28 to 29 transition an operator actually faces.
 
-### 12. Add a `--concurrency` option to run independent scenarios in parallel
-For a CI matrix running all 4 built-in scenarios, each currently needs its own full CLI
-invocation. A `upgrade-drill run-all` command (or similar) that runs several scenarios and
-reports a combined summary would speed up broad regression checks.
-- [ ] New command runs N scenarios, each in its own isolated topology/ports
-- [ ] Combined summary report (which scenarios passed/failed/were inconclusive)
-- Suggested files: `src/cli/index.ts`, new `src/runner/run-all.ts`
+**Current state**
+The README's "Protocol model" section documents this. `happy-path` adopts 0 to 29 in one vote,
+which shows a direct jump works, and `set-upgrade` plus `wait` already exist in
+`src/scenario/schema.ts`.
 
-### 13. Add per-node resource limits to generated configs
-Real validators run with specific resource ceilings; scenarios currently don't model this at
-all. Add an optional `validators[].limits` field controlling Soroban resource limits, matching
-`upgrade-preflight`'s own verified `--limits` handling where relevant.
-- [ ] `topology.validators[].limits` (optional) accepted in the schema
-- [ ] Rendered into the generated config where applicable
-- Suggested files: `src/scenario/schema.ts`, `src/topology/render-config.ts`
+**What to build**
+An optional scenario field (for example `bootstrap: { protocolVersion: 28 }`) that, before the
+timeline starts, upgrades every validator to that protocol and polls `info.ledger.version`
+until all report it. If that does not happen within a limit, the drill ends `INCONCLUSIVE`.
+Then add a `happy-path` variant that drills 28 to 29.
 
-### 14. Add a `--timeout` safety net per drill
-A scenario with a mis-scoped `wait` could run far longer than intended. Add an overall drill
-timeout (CLI flag, default generous) that tears down and reports `INCONCLUSIVE` rather than
-hanging indefinitely.
-- [ ] `runDrill` accepts an optional overall timeout and tears down cleanly on expiry
-- [ ] Unit test using a fake clock proving the timeout fires
-- Suggested files: `src/runner/run.ts`, `src/cli/index.ts`
+**Acceptance criteria**
+- [ ] Without the field, behavior is unchanged.
+- [ ] Observations before the timeline starts are not mixed into the timeline report.
+- [ ] A real run of the new variant shows the ledger at 28 before the vote and 29 after.
+- [ ] The unit tests for the new logic run without Docker (fake clock and driver, see `src/timeline/engine.test.ts`).
 
-### 15. Cache Docker image pulls in CI
-Speed up `npm run test:integration` in CI by caching the `stellar/stellar-core:28`/`:29` image
-layers between runs.
-- [ ] CI workflow uses a Docker layer cache action
-- [ ] Documented in `docs/TROUBLESHOOTING.md` or `CONTRIBUTING.md`
-- Suggested files: `.github/workflows/ci.yml`
+**Out of scope**
+New action types. Changing how verdicts are classified.
 
-### 16. Add a `list-scenarios --json` output mode
-For programmatic consumption — currently `list-scenarios` only prints human-readable lines.
-- [ ] `--json` flag prints an array of `{name, description, path}`
-- [ ] Unit test covering the JSON shape
-- Suggested files: `src/cli/index.ts`
+**Verification**
+`npm test`, plus a real run of the new scenario with Docker.
 
-## High (4)
+---
 
-### 17. A sweep mode that finds the exact number of laggards that breaks quorum
-Given a topology and a threshold, automatically run `quorum-breaker`-style trials with
-increasing numbers of stopped nodes until the network stalls, reporting the exact breaking
-point — genuinely useful for an operator sizing their own quorum's safety margin.
-- [ ] `upgrade-drill sweep <scenario>` runs N trials, varying how many nodes are stopped
-- [ ] Reports the exact minimum stopped-node count that produces `NETWORK_STALLED`
-- [ ] Each trial reuses the existing runner/verdict logic, not new bespoke code
-- Suggested files: new `src/cli/sweep.ts`, `src/runner/run.ts`
+### 3. Label "protocol 0" as genesis in reports
+**Complexity:** Trivial
 
-### 18. Import a real validator/quorum layout from public network data as a topology
-Let a user point at a real network's published quorum configuration (e.g. a TOML/JSON export
-from a known explorer) and generate a scaled-down local topology that mirrors its real
-quorum-set shape, rather than hand-writing one.
-- [ ] `upgrade-drill import-topology --from <file>` scaffolds a `topology` block
-- [ ] Handles the case where the real topology is too large to run locally with a clear error
-- Suggested files: new `src/topology/import.ts`, `src/cli/index.ts`
+**Description**
+A final protocol of `0` reads like an error. It means the network never adopted any upgrade.
 
-### 19. A Kubernetes backend behind the driver interface
-`src/driver/compose.ts` is the only place that knows how to start/stop/restart a node. A
-Kubernetes-based backend (for running larger drills on a real cluster instead of a laptop)
-should be possible by implementing the same small interface, per `docs/ARCHITECTURE.md`'s
-module boundaries.
-- [ ] A documented driver interface `src/driver/` implementations must satisfy
-- [ ] A real (if minimal) Kubernetes-based implementation
-- [ ] At least one scenario runs successfully against it
-- Suggested files: `src/driver/`, new `docs/ADDING_A_DRIVER_BACKEND.md`
+**Current state**
+`src/report/markdown.ts` prints `finalProtocolVersion ?? 'unknown'` and the timeline's
+`protocolVersion` raw, so a never-upgraded node shows `0`. `docs/TROUBLESHOOTING.md` explains
+the value.
 
-### 20. A GitHub Action wrapper, mirroring `upgrade-preflight`'s own `action/action.yml`
-Let other repos run a drill as part of their own CI without checking this repo out manually.
-- [ ] `action/action.yml` composite action builds this repo and runs a given scenario
-- [ ] Writes the Markdown report to the job summary
-- [ ] Documented in a new `docs/CI_USAGE.md`, matching `upgrade-preflight`'s pattern
-- Suggested files: new `action/action.yml`, `docs/CI_USAGE.md`
+**What to build**
+Render `0` in the Markdown report as `0 (genesis, never upgraded)` in the per-node table and the
+timeline. Leave the JSON report numeric.
+
+**Acceptance criteria**
+- [ ] Markdown shows the label for 0 and plain numbers otherwise.
+- [ ] A test in `src/report/markdown.test.ts` covers both.
+- [ ] `src/report/json.ts` output is unchanged.
+
+**Out of scope**
+Changing what the verdict engine reads (`info.ledger.version`).
+
+**Verification**
+`npm test`.
+
+---
+
+### 4. Add an overall timeout to a drill
+**Complexity:** Medium
+
+**Description**
+A stuck `docker compose` call stalls the drill with no clear end.
+
+**Current state**
+`src/driver/http-client.ts` bounds individual node requests. `composeUp`, `composeStartNode`,
+`composeStopNode` and the other calls in `src/driver/compose.ts`, and the drill as a whole in
+`runDrill` (`src/runner/run.ts`), have no timeout. The timeline's wall-clock length is fixed by its `wait` actions.
+
+**What to build**
+An optional overall timeout (a CLI flag with a generous default) that tears the network down and
+ends the drill `INCONCLUSIVE` with a clear message, instead of hanging.
+
+**Acceptance criteria**
+- [ ] On expiry the containers are torn down and the report explains why.
+- [ ] A unit test with a fake clock and a never-resolving fake driver proves the timeout fires.
+- [ ] The default does not interrupt the built-in scenarios.
+
+**Out of scope**
+Per-action timeouts.
+
+**Verification**
+`npm test`.
+
+---
+
+### 5. Sweep: find how many stopped validators break the network
+**Complexity:** High
+
+**Description**
+Operators want to know how many validators can be down before consensus stops. Today each
+number is a hand-written scenario.
+
+**Current state**
+`quorum-breaker` stops 2 of 5 validators and ends `NETWORK_STALLED`. Each scenario is one fixed
+timeline and `src/runner/run.ts` runs one at a time.
+
+**What to build**
+`upgrade-drill sweep <scenario> --stop <min>..<max>` that reruns a scenario with an increasing
+number of stopped validators and reports the smallest number that ends in `NETWORK_STALLED`.
+Each trial must reuse the existing runner and verdict logic.
+
+**Acceptance criteria**
+- [ ] Each trial reuses `runDrill` and `classifyDrill`.
+- [ ] The summary lists each trial's verdict and the first stalling count.
+- [ ] Trial orchestration is unit-tested with a fake runner, without Docker.
+
+**Out of scope**
+Running trials in parallel.
+
+**Verification**
+`npm test`, plus a real sweep with Docker.
+
+---
+
+### 6. Provide a GitHub Action to run a drill in CI
+**Complexity:** Medium
+
+**Description**
+Other repositories can't run a drill in their pipeline without checking this one out by hand.
+
+**Current state**
+There is no action. The sister project `upgrade-preflight` has `action/action.yml`, a composite
+action that builds the CLI, runs it, and writes the report to the job summary. The drill needs
+Docker and about 6 to 7 minutes per scenario.
+
+**What to build**
+A composite `action/action.yml` that builds this repository, runs a given scenario file, writes
+the Markdown report to the job summary, and uploads the reports as artifacts. Document it in
+`docs/CI_USAGE.md`.
+
+**Acceptance criteria**
+- [ ] Exit codes follow the README (0, 1 for stalled/not adopted, 2 for inconclusive).
+- [ ] The docs explain the run time and the Docker requirement.
+- [ ] The PR links a real workflow run that used the action.
+
+**Out of scope**
+Other CI providers.
+
+**Verification**
+Run the action from a test repository and link the run.
