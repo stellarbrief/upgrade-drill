@@ -54,7 +54,7 @@ import correctly. ESLint (`typescript-eslint` recommended rules) enforces the re
 
 - **`src/scenario/`, `src/verdict/`, `src/report/`, `src/timeline/`** are pure functions over
   plain data — no Docker needed. This is the easiest, fastest place to add coverage.
-- **`src/topology/`** — config/Compose-file generation is fully unit-tested via
+- **`src/topology/`** — config/Compose-file generation is unit-tested via
   `fakeKeypairSource` (see `src/topology/generate.test.ts`); a new field needs a test asserting
   the generated text/document, not a real Docker run.
 - **`src/driver/`** — mock `node:child_process`/`fetch`, following
@@ -67,8 +67,7 @@ import correctly. ESLint (`typescript-eslint` recommended rules) enforces the re
 ## How issues are rated for complexity
 
 Issues in [`ISSUES_BACKLOG.md`](ISSUES_BACKLOG.md) are rated **Trivial**, **Medium**, or
-**High**, matching the [Stellar Wave Program](https://docs.drips.network/wave/)'s complexity
-tiers:
+**High** by scope and complexity:
 
 - **Trivial**: typos, small bug fixes, copy changes, a new scenario YAML variant, better CLI
   help text, improved error messages.

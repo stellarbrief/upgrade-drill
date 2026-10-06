@@ -4,6 +4,8 @@ Candidate issues, each written to be posted to GitHub as-is. Every entry states 
 state at a specific commit, what to build, how to verify it, and what is out of scope.
 Complexity (Trivial / Medium / High) follows the tiers in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 If you pick one up, comment on the issue first so two people don't build the same thing.
+Entries marked **Posted on GitHub** are open issues: comment there, not here. The rest are
+candidates that have not been posted yet.
 
 Audited commit: `3c23b6d`
 
@@ -78,6 +80,7 @@ New action types. Changing how verdicts are classified.
 
 ### 3. Label "protocol 0" as genesis in reports
 **Complexity:** Trivial
+**Posted on GitHub:** #6
 
 **Description**
 A final protocol of `0` reads like an error. It means the network never adopted any upgrade.
@@ -106,6 +109,7 @@ Changing what the verdict engine reads (`info.ledger.version`).
 
 ### 4. Add an overall timeout to a drill
 **Complexity:** Medium
+**Posted on GitHub:** #7
 
 **Description**
 A stuck `docker compose` call stalls the drill with no clear end.

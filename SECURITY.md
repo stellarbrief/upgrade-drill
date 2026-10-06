@@ -15,7 +15,11 @@ Relevant concerns include (but aren't limited to):
 
 - A generated test secret key leaking into logs, reports, or CI output. `src/driver/gen-seed.ts`
   never logs a secret, and only public keys flow into any report — but a new code path that
-  threads a secret into a log line would be a real finding.
+  threads a secret into a log line would be a real finding. The generated secret keys are
+  written into the node config files in the work directory (a temporary `upgrade-drill-*`
+  directory by default, or `--work-dir`), because stellar-core needs them there. They are
+  throwaway keys for a private network, and the directory is not deleted after a run, so
+  remove it when you are finished.
 - A scenario file from an untrusted source causing unexpected `docker`/`docker compose`
   arguments — the topology generator (`src/topology/`) only ever produces fixed, known flags
   from a scenario's validated fields; report if you find a way to inject arbitrary arguments

@@ -2,8 +2,8 @@
 
 A CLI that lets Stellar validator operators rehearse a protocol upgrade on their own laptop —
 launching a small private network of real `stellar-core` containers, running a scripted upgrade
-vote, and reporting exactly what happened: which validators upgraded, which fell behind, and
-whether the network stayed live. Local only; not affiliated with SDF; not for production.
+vote, and reporting what each node did: which validators adopted the upgrade, which did not,
+and whether the network stayed live. Local only; not affiliated with SDF; not for production.
 
 **See it without Docker:** the [Upgrade Drill playground](https://stellarbrief.github.io/playground/drill/)
 replays real recorded runs of all four scenarios, observation by observation.
@@ -63,7 +63,7 @@ actually do before running it for real.
 | `happy-path` | All validators upgrade together and adopt the new protocol version. |
 | `one-laggard` | One validator never gets the upgrade vote. With 3 validators at the default 67% threshold, all 3 must agree, so in real runs the whole network stays at genesis protocol 0 (`UPGRADE_NOT_ADOPTED`) while every node stays synced. |
 | `quorum-breaker` | Enough validators go down that the remaining ones can't reach quorum at all — a genuinely different dynamic from `one-laggard`, using 5 validators so a minority loss doesn't already block every vote. |
-| `mismatched-vote` | Validators disagree on exactly when to apply the same upgrade, so it's never adopted, even though every node stays healthy. |
+| `mismatched-vote` | One validator is scheduled for a much later upgrade time than the others, so the vote does not complete within the drill, even though every node stays healthy. |
 
 `upgrade-drill list-scenarios` lists these with their file paths. Full reports from real runs of
 all four are in [`docs/samples/`](docs/samples/), with a provenance record, and a few raw node

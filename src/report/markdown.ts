@@ -61,7 +61,7 @@ function whatThisMeans(verdict: Verdict): string {
     case 'NETWORK_STALLED':
       return 'No validator ended in a synced state — the network as a whole stopped closing ledgers, not just the upgrade vote. This is the most severe outcome: investigate the quorum configuration and validator availability immediately.';
     case 'UPGRADE_NOT_ADOPTED':
-      return 'Every validator stayed healthy and in consensus, but the upgrade itself was never adopted network-wide. This usually means the quorum could not agree on one shared upgrade value — check for mismatched upgrade times/versions across validators.';
+      return 'Every validator stayed healthy and in consensus, but the upgrade itself was not adopted network-wide during this drill. This usually means the quorum could not agree on one shared upgrade value — check for mismatched upgrade times/versions across validators.';
     case 'INCONCLUSIVE':
       return 'There is not enough real observed data to state a confident verdict. Re-run the drill, or check the raw fixtures for what went wrong collecting observations — this is not the same as saying the upgrade succeeded or failed.';
   }

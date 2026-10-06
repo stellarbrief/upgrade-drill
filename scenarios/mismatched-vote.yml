@@ -14,7 +14,7 @@
 # anyway once it did. The gap must outlast the whole observation window to produce genuine,
 # sustained disagreement.
 name: mismatched-vote
-description: Validators disagree on exactly when to apply the same upgrade, so it never gets adopted.
+description: One validator is scheduled for a much later upgrade time than the others, so the vote does not complete within the drill.
 
 topology:
   validators:
