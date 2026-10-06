@@ -5,6 +5,9 @@ launching a small private network of real `stellar-core` containers, running a s
 vote, and reporting exactly what happened: which validators upgraded, which fell behind, and
 whether the network stayed live. Local only; not affiliated with SDF; not for production.
 
+**See it without Docker:** the [Upgrade Drill playground](https://stellarbrief.github.io/playground/drill/)
+replays real recorded runs of all four scenarios, observation by observation.
+
 ## How it works
 
 1. You describe a validator topology and a timed sequence of actions in a scenario YAML file.
