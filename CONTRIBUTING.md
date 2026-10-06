@@ -76,3 +76,19 @@ tiers:
   timeline action type, CI improvements.
 - **High**: a complex feature, refactor, or new integration — a new topology backend, a plugin
   system, importing a real validator layout as a topology.
+
+## How maintainers work here
+
+- There is currently one maintainer. Response times are best effort; there is no guaranteed
+  turnaround.
+- A bug report is reproduced before a fix is accepted. A feature is discussed in its issue
+  before a PR is opened.
+- CI (lint, typecheck, tests, build, and the integration job) must pass before merge. A change
+  to a scenario or to verdict logic should also be run for real with Docker, or via the manual
+  `Verify all scenarios` workflow, and the observed result recorded.
+- A change that affects a documented claim updates the docs in the same PR. A scenario's
+  description states what was observed, not what was expected.
+- Changes to the scenario schema, verdict rules or the JSON report shape need maintainer
+  approval, and a JSON shape change bumps `schemaVersion` and is noted in `CHANGELOG.md`.
+- Releases are tags (`vX.Y.Z`) on `main` after CI is green, with notes taken from `CHANGELOG.md`.
+- Security reports: see [`SECURITY.md`](SECURITY.md).
