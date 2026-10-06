@@ -1,0 +1,20 @@
+{
+  "kind": "Recorded",
+  "description": "Reports from real runs of the four built-in scenarios against real stellar-core containers, with the ledger.version fix in place.",
+  "source": "GitHub Actions workflow \"Verify all scenarios\" (.github/workflows/verify-scenarios.yml)",
+  "runUrl": "https://github.com/stellarbrief/upgrade-drill/actions/runs/36764998882",
+  "capturedAt": "2026-09-30T19:20:37Z",
+  "commit": "67a98f2202e0bb51e2fbe930a84effb3c37cf5d3",
+  "command": "node dist/cli/index.js run scenarios/<scenario>.yml --markdown-out <scenario>-report.md --json-out <scenario>-report.json",
+  "scenarios": {
+    "happy-path": { "verdict": "NETWORK_UPGRADED", "finalProtocolVersion": "29 on all 3 nodes" },
+    "one-laggard": { "verdict": "UPGRADE_NOT_ADOPTED", "finalProtocolVersion": "0 on all 3 nodes" },
+    "quorum-breaker": { "verdict": "NETWORK_STALLED", "finalProtocolVersion": "0 on 3 nodes, 2 nodes unreachable" },
+    "mismatched-vote": { "verdict": "UPGRADE_NOT_ADOPTED", "finalProtocolVersion": "0 on all 3 nodes" }
+  },
+  "notes": [
+    "Files are the unmodified workflow artifacts, copied byte for byte (JSON report schemaVersion 2, including the raw per-node snapshots).",
+    "Scenario descriptions were reworded after this run to match these results; the scenario timelines and topologies are unchanged.",
+    "NETWORK_LIVE_WITH_HALTED_NODES is not represented: no built-in scenario has produced it in a real run."
+  ]
+}

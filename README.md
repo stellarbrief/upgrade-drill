@@ -62,8 +62,9 @@ actually do before running it for real.
 | `quorum-breaker` | Enough validators go down that the remaining ones can't reach quorum at all — a genuinely different dynamic from `one-laggard`, using 5 validators so a minority loss doesn't already block every vote. |
 | `mismatched-vote` | Validators disagree on exactly when to apply the same upgrade, so it's never adopted, even though every node stays healthy. |
 
-`upgrade-drill list-scenarios` lists these with their file paths. Real captured observations
-from actual runs are in [`fixtures/`](fixtures/) — see
+`upgrade-drill list-scenarios` lists these with their file paths. Full reports from real runs of
+all four are in [`docs/samples/`](docs/samples/), with a provenance record, and a few raw node
+responses from the original feasibility spike are in [`fixtures/`](fixtures/). See
 [`docs/WRITING_SCENARIOS.md`](docs/WRITING_SCENARIOS.md) to write your own.
 
 **Verified by real runs so far:** `NETWORK_UPGRADED` (`happy-path`), `UPGRADE_NOT_ADOPTED`

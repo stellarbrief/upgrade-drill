@@ -1,0 +1,5949 @@
+{
+  "schemaVersion": 2,
+  "scenarioName": "happy-path",
+  "scenarioDescription": "All validators upgrade together and adopt the new protocol version.",
+  "verdict": "NETWORK_UPGRADED",
+  "verdictExplanation": "All 3 validators ended synced and on protocol 29.",
+  "nodeOutcomes": [
+    {
+      "node": "node1",
+      "finalState": "Synced!",
+      "finalProtocolVersion": 29,
+      "explanation": "node1 ended synced on protocol 29 (quorum agreement 3/3)."
+    },
+    {
+      "node": "node2",
+      "finalState": "Synced!",
+      "finalProtocolVersion": 29,
+      "explanation": "node2 ended synced on protocol 29 (quorum agreement 3/3)."
+    },
+    {
+      "node": "node3",
+      "finalState": "Synced!",
+      "finalProtocolVersion": 29,
+      "explanation": "node3 ended synced on protocol 29 (quorum agreement 3/3)."
+    }
+  ],
+  "timeline": [
+    {
+      "timestampMs": 1790796074121,
+      "node": "node1",
+      "ledgerNum": 1,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796074125,
+      "node": "node2",
+      "ledgerNum": 1,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796074128,
+      "node": "node3",
+      "ledgerNum": 1,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796084136,
+      "node": "node1",
+      "ledgerNum": 3,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796084138,
+      "node": "node2",
+      "ledgerNum": 3,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796084140,
+      "node": "node3",
+      "ledgerNum": 3,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796094147,
+      "node": "node1",
+      "ledgerNum": 5,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796094149,
+      "node": "node2",
+      "ledgerNum": 5,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796094152,
+      "node": "node3",
+      "ledgerNum": 5,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796104158,
+      "node": "node1",
+      "ledgerNum": 7,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796104159,
+      "node": "node2",
+      "ledgerNum": 7,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796104161,
+      "node": "node3",
+      "ledgerNum": 7,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796114168,
+      "node": "node1",
+      "ledgerNum": 9,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796114169,
+      "node": "node2",
+      "ledgerNum": 9,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796114170,
+      "node": "node3",
+      "ledgerNum": 9,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796124177,
+      "node": "node1",
+      "ledgerNum": 11,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796124178,
+      "node": "node2",
+      "ledgerNum": 11,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796124180,
+      "node": "node3",
+      "ledgerNum": 11,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796134186,
+      "node": "node1",
+      "ledgerNum": 13,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796134188,
+      "node": "node2",
+      "ledgerNum": 13,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796134189,
+      "node": "node3",
+      "ledgerNum": 13,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796144196,
+      "node": "node1",
+      "ledgerNum": 15,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796144197,
+      "node": "node2",
+      "ledgerNum": 15,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796144198,
+      "node": "node3",
+      "ledgerNum": 15,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796154204,
+      "node": "node1",
+      "ledgerNum": 17,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796154206,
+      "node": "node2",
+      "ledgerNum": 17,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796154208,
+      "node": "node3",
+      "ledgerNum": 17,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164214,
+      "node": "node1",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164215,
+      "node": "node2",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164216,
+      "node": "node3",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164578,
+      "node": "node1",
+      "ledgerNum": null,
+      "protocolVersion": null,
+      "state": null
+    },
+    {
+      "timestampMs": 1790796164580,
+      "node": "node2",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164582,
+      "node": "node3",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164916,
+      "node": "node1",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796164917,
+      "node": "node2",
+      "ledgerNum": null,
+      "protocolVersion": null,
+      "state": null
+    },
+    {
+      "timestampMs": 1790796164918,
+      "node": "node3",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796165266,
+      "node": "node1",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796165268,
+      "node": "node2",
+      "ledgerNum": 19,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796165269,
+      "node": "node3",
+      "ledgerNum": null,
+      "protocolVersion": null,
+      "state": null
+    },
+    {
+      "timestampMs": 1790796175276,
+      "node": "node1",
+      "ledgerNum": 21,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796175278,
+      "node": "node2",
+      "ledgerNum": 21,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796175279,
+      "node": "node3",
+      "ledgerNum": 21,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796185285,
+      "node": "node1",
+      "ledgerNum": 23,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796185287,
+      "node": "node2",
+      "ledgerNum": 23,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796185288,
+      "node": "node3",
+      "ledgerNum": 23,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796195296,
+      "node": "node1",
+      "ledgerNum": 25,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796195297,
+      "node": "node2",
+      "ledgerNum": 25,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796195299,
+      "node": "node3",
+      "ledgerNum": 25,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796205305,
+      "node": "node1",
+      "ledgerNum": 27,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796205307,
+      "node": "node2",
+      "ledgerNum": 27,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796205308,
+      "node": "node3",
+      "ledgerNum": 27,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796215315,
+      "node": "node1",
+      "ledgerNum": 29,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796215317,
+      "node": "node2",
+      "ledgerNum": 29,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796215318,
+      "node": "node3",
+      "ledgerNum": 29,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796225325,
+      "node": "node1",
+      "ledgerNum": 31,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796225327,
+      "node": "node2",
+      "ledgerNum": 31,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796225328,
+      "node": "node3",
+      "ledgerNum": 31,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796235332,
+      "node": "node1",
+      "ledgerNum": 33,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796235333,
+      "node": "node2",
+      "ledgerNum": 33,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796235334,
+      "node": "node3",
+      "ledgerNum": 33,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796245341,
+      "node": "node1",
+      "ledgerNum": 35,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796245342,
+      "node": "node2",
+      "ledgerNum": 35,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796245343,
+      "node": "node3",
+      "ledgerNum": 35,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796255351,
+      "node": "node1",
+      "ledgerNum": 37,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796255352,
+      "node": "node2",
+      "ledgerNum": 37,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796255353,
+      "node": "node3",
+      "ledgerNum": 37,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796255360,
+      "node": "node1",
+      "ledgerNum": 37,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796255361,
+      "node": "node2",
+      "ledgerNum": 37,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796255362,
+      "node": "node3",
+      "ledgerNum": 37,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796265368,
+      "node": "node1",
+      "ledgerNum": 39,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796265370,
+      "node": "node2",
+      "ledgerNum": 39,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796265371,
+      "node": "node3",
+      "ledgerNum": 39,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796275378,
+      "node": "node1",
+      "ledgerNum": 41,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796275379,
+      "node": "node2",
+      "ledgerNum": 41,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796275380,
+      "node": "node3",
+      "ledgerNum": 41,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796285387,
+      "node": "node1",
+      "ledgerNum": 43,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796285388,
+      "node": "node2",
+      "ledgerNum": 43,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796285389,
+      "node": "node3",
+      "ledgerNum": 43,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796295396,
+      "node": "node1",
+      "ledgerNum": 45,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796295398,
+      "node": "node2",
+      "ledgerNum": 45,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796295399,
+      "node": "node3",
+      "ledgerNum": 45,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796305407,
+      "node": "node1",
+      "ledgerNum": 47,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796305408,
+      "node": "node2",
+      "ledgerNum": 47,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796305409,
+      "node": "node3",
+      "ledgerNum": 47,
+      "protocolVersion": 0,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796315417,
+      "node": "node1",
+      "ledgerNum": 49,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796315418,
+      "node": "node2",
+      "ledgerNum": 49,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796315420,
+      "node": "node3",
+      "ledgerNum": 49,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796325426,
+      "node": "node1",
+      "ledgerNum": 51,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796325428,
+      "node": "node2",
+      "ledgerNum": 51,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796325429,
+      "node": "node3",
+      "ledgerNum": 51,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796335436,
+      "node": "node1",
+      "ledgerNum": 53,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796335437,
+      "node": "node2",
+      "ledgerNum": 53,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796335439,
+      "node": "node3",
+      "ledgerNum": 53,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796345445,
+      "node": "node1",
+      "ledgerNum": 55,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796345446,
+      "node": "node2",
+      "ledgerNum": 55,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    },
+    {
+      "timestampMs": 1790796345447,
+      "node": "node3",
+      "ledgerNum": 55,
+      "protocolVersion": 29,
+      "state": "Synced!"
+    }
+  ],
+  "surprises": [],
+  "snapshots": [
+    {
+      "node": "node1",
+      "timestampMs": 1790796074121,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 1,
+      "quorumAgree": null,
+      "quorumNodeCount": null,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 0,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 0,
+            "hash": "a3281069fc55c11c5f298ef4c17d071eee4329ddf194c74c4ba5dd1c00c71072",
+            "maxTxSetSize": 100,
+            "num": 1,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "cost": 0,
+              "lag_ms": null
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796074125,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 1,
+      "quorumAgree": null,
+      "quorumNodeCount": null,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 0,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 0,
+            "hash": "a3281069fc55c11c5f298ef4c17d071eee4329ddf194c74c4ba5dd1c00c71072",
+            "maxTxSetSize": 100,
+            "num": 1,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "cost": 0,
+              "lag_ms": null
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796074128,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 1,
+      "quorumAgree": null,
+      "quorumNodeCount": null,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 0,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 0,
+            "hash": "a3281069fc55c11c5f298ef4c17d071eee4329ddf194c74c4ba5dd1c00c71072",
+            "maxTxSetSize": 100,
+            "num": 1,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "cost": 0,
+              "lag_ms": null
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796084136,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 3,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796081,
+            "hash": "8dcc777e5fd179df301b0af3a011352cfc204d1787a85638e8d70f1b3ccc2898",
+            "maxTxSetSize": 100,
+            "num": 3,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 9920,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 2,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796084138,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 3,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796081,
+            "hash": "8dcc777e5fd179df301b0af3a011352cfc204d1787a85638e8d70f1b3ccc2898",
+            "maxTxSetSize": 100,
+            "num": 3,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 10112,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 2,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796084140,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 3,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796081,
+            "hash": "8dcc777e5fd179df301b0af3a011352cfc204d1787a85638e8d70f1b3ccc2898",
+            "maxTxSetSize": 100,
+            "num": 3,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 10112,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 2,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796094147,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 5,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796091,
+            "hash": "9a458500e6b51b468f69398245b59c0f27706a276e33caf7faed89b54a75dd20",
+            "maxTxSetSize": 100,
+            "num": 5,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 4,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796094149,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 5,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796091,
+            "hash": "9a458500e6b51b468f69398245b59c0f27706a276e33caf7faed89b54a75dd20",
+            "maxTxSetSize": 100,
+            "num": 5,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 4,
+              "ledger": 4,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796094152,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 5,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796091,
+            "hash": "9a458500e6b51b468f69398245b59c0f27706a276e33caf7faed89b54a75dd20",
+            "maxTxSetSize": 100,
+            "num": 5,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 4,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796104158,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 7,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796101,
+            "hash": "abad7271fb86c1c29b3b634e7cfc913a6212ec40bf700c35e5cbeb95222e07e1",
+            "maxTxSetSize": 100,
+            "num": 7,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 6,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796104159,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 7,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796101,
+            "hash": "abad7271fb86c1c29b3b634e7cfc913a6212ec40bf700c35e5cbeb95222e07e1",
+            "maxTxSetSize": 100,
+            "num": 7,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 4,
+              "ledger": 6,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796104161,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 7,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796101,
+            "hash": "abad7271fb86c1c29b3b634e7cfc913a6212ec40bf700c35e5cbeb95222e07e1",
+            "maxTxSetSize": 100,
+            "num": 7,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 6,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796114168,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 9,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796111,
+            "hash": "bd108b48b135a3de3f207a586d40422e26d59b52b12057bec60a4101ee18aa02",
+            "maxTxSetSize": 100,
+            "num": 9,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 8,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796114169,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 9,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796111,
+            "hash": "bd108b48b135a3de3f207a586d40422e26d59b52b12057bec60a4101ee18aa02",
+            "maxTxSetSize": 100,
+            "num": 9,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 4,
+              "ledger": 8,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796114170,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 9,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796111,
+            "hash": "bd108b48b135a3de3f207a586d40422e26d59b52b12057bec60a4101ee18aa02",
+            "maxTxSetSize": 100,
+            "num": 9,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 8,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796124177,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 11,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796121,
+            "hash": "b7ecf8093ca35f66b2f25a7668313823a23f9c9fd18e7aeba6a4bba969cce8da",
+            "maxTxSetSize": 100,
+            "num": 11,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 10,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796124178,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 11,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796121,
+            "hash": "b7ecf8093ca35f66b2f25a7668313823a23f9c9fd18e7aeba6a4bba969cce8da",
+            "maxTxSetSize": 100,
+            "num": 11,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 10,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796124180,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 11,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796121,
+            "hash": "b7ecf8093ca35f66b2f25a7668313823a23f9c9fd18e7aeba6a4bba969cce8da",
+            "maxTxSetSize": 100,
+            "num": 11,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 10,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796134186,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 13,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796131,
+            "hash": "b2869b780363a87f8ea9fcf74cfe2a8431d11603112b88f5fdc7eee14ce7c0a7",
+            "maxTxSetSize": 100,
+            "num": 13,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 12,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796134188,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 13,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796131,
+            "hash": "b2869b780363a87f8ea9fcf74cfe2a8431d11603112b88f5fdc7eee14ce7c0a7",
+            "maxTxSetSize": 100,
+            "num": 13,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 12,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796134189,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 13,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796131,
+            "hash": "b2869b780363a87f8ea9fcf74cfe2a8431d11603112b88f5fdc7eee14ce7c0a7",
+            "maxTxSetSize": 100,
+            "num": 13,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 12,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796144196,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 15,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796141,
+            "hash": "ae4342d1e70115fe97c4f18ca27622f03c8ab5c2f504d0f1faf74103481c2b92",
+            "maxTxSetSize": 100,
+            "num": 15,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 14,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796144197,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 15,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796141,
+            "hash": "ae4342d1e70115fe97c4f18ca27622f03c8ab5c2f504d0f1faf74103481c2b92",
+            "maxTxSetSize": 100,
+            "num": 15,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 14,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796144198,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 15,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796141,
+            "hash": "ae4342d1e70115fe97c4f18ca27622f03c8ab5c2f504d0f1faf74103481c2b92",
+            "maxTxSetSize": 100,
+            "num": 15,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 14,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796154204,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 17,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796151,
+            "hash": "9cd76f8394bb7ef9c3e7eafc0f11b6db6694a5260c9e26747f65561148f6c14f",
+            "maxTxSetSize": 100,
+            "num": 17,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 16,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796154206,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 17,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796151,
+            "hash": "9cd76f8394bb7ef9c3e7eafc0f11b6db6694a5260c9e26747f65561148f6c14f",
+            "maxTxSetSize": 100,
+            "num": 17,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 16,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796154208,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 17,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796151,
+            "hash": "9cd76f8394bb7ef9c3e7eafc0f11b6db6694a5260c9e26747f65561148f6c14f",
+            "maxTxSetSize": 100,
+            "num": 17,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 16,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796164214,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 18,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796164215,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 18,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796164216,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 18,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796164578,
+      "reachable": false,
+      "state": null,
+      "protocolVersion": null,
+      "ledgerNum": null,
+      "quorumAgree": null,
+      "quorumNodeCount": null,
+      "raw": null
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796164580,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 1,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 18,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796164582,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 1,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 18,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796164916,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 1,
+      "quorumNodeCount": null,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 1,
+              "cost": 0,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 0,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 18,
+              "missing": 2,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796164917,
+      "reachable": false,
+      "state": null,
+      "protocolVersion": null,
+      "ledgerNum": null,
+      "quorumAgree": null,
+      "quorumNodeCount": null,
+      "raw": null
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796164918,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 28.0.1 (947aad8413c189d85504acf72207e85eeda9b021)",
+          "ledger": {
+            "age": 3,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 28,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 18,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 2,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:21:14Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796165266,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 1,
+      "quorumNodeCount": null,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 1,
+              "cost": 0,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 0,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 18,
+              "missing": 2,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796165268,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 19,
+      "quorumAgree": 1,
+      "quorumNodeCount": null,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796161,
+            "hash": "4703509d67d3803a8ec569d8cf3e76dc269b4e5ce80fc320bf3c1cacea192211",
+            "maxTxSetSize": 100,
+            "num": 19,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 0,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 1,
+              "cost": 0,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 0,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 18,
+              "missing": 2,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796165269,
+      "reachable": false,
+      "state": null,
+      "protocolVersion": null,
+      "ledgerNum": null,
+      "quorumAgree": null,
+      "quorumNodeCount": null,
+      "raw": null
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796175276,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 21,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796171,
+            "hash": "f59cd115030132155cf585b55cf246f3aa42c2694674b672ffe7ade1e61ec10b",
+            "maxTxSetSize": 100,
+            "num": 21,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 13480,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 20,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796175278,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 21,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796171,
+            "hash": "f59cd115030132155cf585b55cf246f3aa42c2694674b672ffe7ade1e61ec10b",
+            "maxTxSetSize": 100,
+            "num": 21,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 12840,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 20,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796175279,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 21,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796171,
+            "hash": "f59cd115030132155cf585b55cf246f3aa42c2694674b672ffe7ade1e61ec10b",
+            "maxTxSetSize": 100,
+            "num": 21,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 12840,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": null,
+              "ledger": 20,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796185285,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 23,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796181,
+            "hash": "975119adc90412c05e1f2cc93d9dfe80e4d1591b090449b75f09080431752771",
+            "maxTxSetSize": 100,
+            "num": 23,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 22,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796185287,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 23,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796181,
+            "hash": "975119adc90412c05e1f2cc93d9dfe80e4d1591b090449b75f09080431752771",
+            "maxTxSetSize": 100,
+            "num": 23,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 22,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796185288,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 23,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796181,
+            "hash": "975119adc90412c05e1f2cc93d9dfe80e4d1591b090449b75f09080431752771",
+            "maxTxSetSize": 100,
+            "num": 23,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 22,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796195296,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 25,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796191,
+            "hash": "beac573f6ef51e7045125430de7222250fafbdeacc0a65ff9717f18cb3cf891f",
+            "maxTxSetSize": 100,
+            "num": 25,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 24,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796195297,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 25,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796191,
+            "hash": "beac573f6ef51e7045125430de7222250fafbdeacc0a65ff9717f18cb3cf891f",
+            "maxTxSetSize": 100,
+            "num": 25,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 24,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796195299,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 25,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796191,
+            "hash": "beac573f6ef51e7045125430de7222250fafbdeacc0a65ff9717f18cb3cf891f",
+            "maxTxSetSize": 100,
+            "num": 25,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 24,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796205305,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 27,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796201,
+            "hash": "e35691f08136993cf26ae190ce396c1bfc9620bbb88b36387b17f286d38a906f",
+            "maxTxSetSize": 100,
+            "num": 27,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 26,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796205307,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 27,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796201,
+            "hash": "e35691f08136993cf26ae190ce396c1bfc9620bbb88b36387b17f286d38a906f",
+            "maxTxSetSize": 100,
+            "num": 27,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 26,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796205308,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 27,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796201,
+            "hash": "e35691f08136993cf26ae190ce396c1bfc9620bbb88b36387b17f286d38a906f",
+            "maxTxSetSize": 100,
+            "num": 27,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 26,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796215315,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 29,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796211,
+            "hash": "e8a71ca0607978f33aacf9b0b7e654f7fc16dd34fa0a59f60e2265c7b9bb8893",
+            "maxTxSetSize": 100,
+            "num": 29,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 28,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796215317,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 29,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796211,
+            "hash": "e8a71ca0607978f33aacf9b0b7e654f7fc16dd34fa0a59f60e2265c7b9bb8893",
+            "maxTxSetSize": 100,
+            "num": 29,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 28,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796215318,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 29,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796211,
+            "hash": "e8a71ca0607978f33aacf9b0b7e654f7fc16dd34fa0a59f60e2265c7b9bb8893",
+            "maxTxSetSize": 100,
+            "num": 29,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 28,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796225325,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 31,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796221,
+            "hash": "13b0b7af2c2c830df42c9a71b82b8b415669b7e1dd3cdc07240f6025e6a0d30a",
+            "maxTxSetSize": 100,
+            "num": 31,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 30,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796225327,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 31,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796221,
+            "hash": "13b0b7af2c2c830df42c9a71b82b8b415669b7e1dd3cdc07240f6025e6a0d30a",
+            "maxTxSetSize": 100,
+            "num": 31,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 30,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796225328,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 31,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796221,
+            "hash": "13b0b7af2c2c830df42c9a71b82b8b415669b7e1dd3cdc07240f6025e6a0d30a",
+            "maxTxSetSize": 100,
+            "num": 31,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 30,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796235332,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 33,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796231,
+            "hash": "20417d5966d3b0fbcb4a4d406e3fe5b4c2c27a0b45c316ab90e61df6ef2f6ee1",
+            "maxTxSetSize": 100,
+            "num": 33,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 32,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796235333,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 33,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796231,
+            "hash": "20417d5966d3b0fbcb4a4d406e3fe5b4c2c27a0b45c316ab90e61df6ef2f6ee1",
+            "maxTxSetSize": 100,
+            "num": 33,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 32,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796235334,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 33,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796231,
+            "hash": "20417d5966d3b0fbcb4a4d406e3fe5b4c2c27a0b45c316ab90e61df6ef2f6ee1",
+            "maxTxSetSize": 100,
+            "num": 33,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 32,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796245341,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 35,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796241,
+            "hash": "81550b47b651c07337ac188a79d3f3574baceacb0ddc574d71c07d165be2b07e",
+            "maxTxSetSize": 100,
+            "num": 35,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 34,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796245342,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 35,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796241,
+            "hash": "81550b47b651c07337ac188a79d3f3574baceacb0ddc574d71c07d165be2b07e",
+            "maxTxSetSize": 100,
+            "num": 35,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 34,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796245343,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 35,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796241,
+            "hash": "81550b47b651c07337ac188a79d3f3574baceacb0ddc574d71c07d165be2b07e",
+            "maxTxSetSize": 100,
+            "num": 35,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 34,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796255351,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 37,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796251,
+            "hash": "325733af6ba83a57392059fa648672b5b6e93154787603d592508daf0c5b5fc8",
+            "maxTxSetSize": 100,
+            "num": 37,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 36,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796255352,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 37,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796251,
+            "hash": "325733af6ba83a57392059fa648672b5b6e93154787603d592508daf0c5b5fc8",
+            "maxTxSetSize": 100,
+            "num": 37,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 36,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796255353,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 37,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796251,
+            "hash": "325733af6ba83a57392059fa648672b5b6e93154787603d592508daf0c5b5fc8",
+            "maxTxSetSize": 100,
+            "num": 37,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 36,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796255360,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 37,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796251,
+            "hash": "325733af6ba83a57392059fa648672b5b6e93154787603d592508daf0c5b5fc8",
+            "maxTxSetSize": 100,
+            "num": 37,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 36,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796255361,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 37,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796251,
+            "hash": "325733af6ba83a57392059fa648672b5b6e93154787603d592508daf0c5b5fc8",
+            "maxTxSetSize": 100,
+            "num": 37,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 36,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796255362,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 37,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796251,
+            "hash": "325733af6ba83a57392059fa648672b5b6e93154787603d592508daf0c5b5fc8",
+            "maxTxSetSize": 100,
+            "num": 37,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 36,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796265368,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 39,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796261,
+            "hash": "28963f7567ee65da89b4b5ba4b1f689cc14423e6c12fcec3c8ae66296c83ddce",
+            "maxTxSetSize": 100,
+            "num": 39,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 38,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796265370,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 39,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796261,
+            "hash": "28963f7567ee65da89b4b5ba4b1f689cc14423e6c12fcec3c8ae66296c83ddce",
+            "maxTxSetSize": 100,
+            "num": 39,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 38,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796265371,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 39,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796261,
+            "hash": "28963f7567ee65da89b4b5ba4b1f689cc14423e6c12fcec3c8ae66296c83ddce",
+            "maxTxSetSize": 100,
+            "num": 39,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 38,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796275378,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 41,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796271,
+            "hash": "8dd0b3bc6b8bc803784f85d78c907a206d3486bce515073e10ede5e183d7a64b",
+            "maxTxSetSize": 100,
+            "num": 41,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 40,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796275379,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 41,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796271,
+            "hash": "8dd0b3bc6b8bc803784f85d78c907a206d3486bce515073e10ede5e183d7a64b",
+            "maxTxSetSize": 100,
+            "num": 41,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 40,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796275380,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 41,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796271,
+            "hash": "8dd0b3bc6b8bc803784f85d78c907a206d3486bce515073e10ede5e183d7a64b",
+            "maxTxSetSize": 100,
+            "num": 41,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 40,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796285387,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 43,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796281,
+            "hash": "f3c492f5acf020faa92232920fd3fbddd8b3f5dc603fcccfc6b1068b34324118",
+            "maxTxSetSize": 100,
+            "num": 43,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 42,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796285388,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 43,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796281,
+            "hash": "f3c492f5acf020faa92232920fd3fbddd8b3f5dc603fcccfc6b1068b34324118",
+            "maxTxSetSize": 100,
+            "num": 43,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 42,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796285389,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 43,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796281,
+            "hash": "f3c492f5acf020faa92232920fd3fbddd8b3f5dc603fcccfc6b1068b34324118",
+            "maxTxSetSize": 100,
+            "num": 43,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 42,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796295396,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 45,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796291,
+            "hash": "d4113c1013ea96d7ee8425ee8e42e9d3b90bcf9df2505247a8488e8589f94115",
+            "maxTxSetSize": 100,
+            "num": 45,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 2,
+              "ledger": 44,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796295398,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 45,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796291,
+            "hash": "d4113c1013ea96d7ee8425ee8e42e9d3b90bcf9df2505247a8488e8589f94115",
+            "maxTxSetSize": 100,
+            "num": 45,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 44,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796295399,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 45,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796291,
+            "hash": "d4113c1013ea96d7ee8425ee8e42e9d3b90bcf9df2505247a8488e8589f94115",
+            "maxTxSetSize": 100,
+            "num": 45,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 44,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796305407,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 47,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796301,
+            "hash": "a2476caaa6e220fa81ca065c5fcc51df98907ea9d0c55dd43d5a5e802cb2db01",
+            "maxTxSetSize": 100,
+            "num": 47,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 46,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796305408,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 47,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796301,
+            "hash": "a2476caaa6e220fa81ca065c5fcc51df98907ea9d0c55dd43d5a5e802cb2db01",
+            "maxTxSetSize": 100,
+            "num": 47,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 46,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796305409,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 0,
+      "ledgerNum": 47,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796301,
+            "hash": "a2476caaa6e220fa81ca065c5fcc51df98907ea9d0c55dd43d5a5e802cb2db01",
+            "maxTxSetSize": 100,
+            "num": 47,
+            "version": 0
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7592,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 46,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!",
+          "status": [
+            "Armed with network upgrades: upgradetime=2026-09-30T19:25:00Z, protocolversion=29"
+          ]
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796315417,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 49,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796311,
+            "hash": "cfa5607659833cf6d923ff84b3ae9ea9696a3054ccc55d50f7d2fb162f010ff7",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 49,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7832,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 48,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796315418,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 49,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796311,
+            "hash": "cfa5607659833cf6d923ff84b3ae9ea9696a3054ccc55d50f7d2fb162f010ff7",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 49,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7832,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 48,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796315420,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 49,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796311,
+            "hash": "cfa5607659833cf6d923ff84b3ae9ea9696a3054ccc55d50f7d2fb162f010ff7",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 49,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7832,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 48,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796325426,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 51,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796321,
+            "hash": "c737035a69f81043f74544b5f408aa5d7b663eb43ab2f896921a742f7f21f570",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 51,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 50,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796325428,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 51,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796321,
+            "hash": "c737035a69f81043f74544b5f408aa5d7b663eb43ab2f896921a742f7f21f570",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 51,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 50,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796325429,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 51,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796321,
+            "hash": "c737035a69f81043f74544b5f408aa5d7b663eb43ab2f896921a742f7f21f570",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 51,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 50,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796335436,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 53,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796331,
+            "hash": "92f16ff832108f0b6e2508415c3d70761b17313dea606fa79f18c8273b6b800b",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 53,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 52,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796335437,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 53,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796331,
+            "hash": "92f16ff832108f0b6e2508415c3d70761b17313dea606fa79f18c8273b6b800b",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 53,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 52,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796335439,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 53,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796331,
+            "hash": "92f16ff832108f0b6e2508415c3d70761b17313dea606fa79f18c8273b6b800b",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 53,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 52,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node1",
+      "timestampMs": 1790796345445,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 55,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796341,
+            "hash": "d69cf2d56eae85ed4f2b05e052ec271a50a2fc83c6ecbb088a3e79887a0c31e1",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 55,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 54,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node2",
+      "timestampMs": 1790796345446,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 55,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796341,
+            "hash": "d69cf2d56eae85ed4f2b05e052ec271a50a2fc83c6ecbb088a3e79887a0c31e1",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 55,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 54,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:44Z",
+          "state": "Synced!"
+        }
+      }
+    },
+    {
+      "node": "node3",
+      "timestampMs": 1790796345447,
+      "reachable": true,
+      "state": "Synced!",
+      "protocolVersion": 29,
+      "ledgerNum": 55,
+      "quorumAgree": 3,
+      "quorumNodeCount": 3,
+      "raw": {
+        "info": {
+          "build": "stellar-core 29.0.0 (4eb83337380a29ad0907f4e32196ce97b8dc7649)",
+          "ledger": {
+            "age": 4,
+            "baseFee": 100,
+            "baseReserve": 100000000,
+            "closeTime": 1790796341,
+            "hash": "d69cf2d56eae85ed4f2b05e052ec271a50a2fc83c6ecbb088a3e79887a0c31e1",
+            "maxSorobanTxSetSize": 1,
+            "maxTxSetSize": 100,
+            "num": 55,
+            "version": 29
+          },
+          "network": "upgrade-drill: happy-path",
+          "peers": {
+            "authenticated_count": 2,
+            "pending_count": 0
+          },
+          "protocol_version": 29,
+          "quorum": {
+            "maybe_dead_nodes": [],
+            "node": "self",
+            "qset": {
+              "agree": 3,
+              "cost": 7928,
+              "delayed": 0,
+              "disagree": 0,
+              "fail_at": 1,
+              "hash": "35a3ee",
+              "lag_ms": 3,
+              "ledger": 54,
+              "missing": 0,
+              "phase": "EXTERNALIZE",
+              "validated": true
+            },
+            "transitive": {
+              "critical": null,
+              "intersection": true,
+              "last_check_ledger": 20,
+              "node_count": 3
+            }
+          },
+          "startedOn": "2026-09-30T19:22:45Z",
+          "state": "Synced!"
+        }
+      }
+    }
+  ],
+  "coverageNote": "This drill ran on a small, local topology with throwaway keys and no real network load. It does not prove real Mainnet upgrade behavior."
+}
