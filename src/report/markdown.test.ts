@@ -56,4 +56,38 @@ describe('toMarkdown', () => {
     const markdown = toMarkdown(report());
     expect(markdown.toLowerCase()).not.toMatch(/guaranteed|proven safe/);
   });
+
+  describe('protocol version 0', () => {
+    const GENESIS_LABEL = '0 (genesis, never upgraded)';
+
+    it('labels protocol 0 as genesis in the per-node table and the timeline', () => {
+      const markdown = toMarkdown(
+        report({
+          nodeOutcomes: [{ node: 'node1', finalState: 'Synced!', finalProtocolVersion: 0, explanation: 'ok' }],
+          timeline: [{ timestampMs: 1000, node: 'node1', ledgerNum: 10, protocolVersion: 0, state: 'Synced!' }],
+        })
+      );
+      expect(markdown).toContain(`| node1 | Synced! | ${GENESIS_LABEL} | ok |`);
+      expect(markdown).toContain(`| +0s | node1 | 10 | ${GENESIS_LABEL} | Synced! |`);
+    });
+
+    it('shows other protocol versions as plain numbers', () => {
+      const markdown = toMarkdown(report());
+      expect(markdown).toContain('| node1 | Synced! | 29 |');
+      expect(markdown).toContain('| +0s | node1 | 10 | 29 | Synced! |');
+      expect(markdown).not.toContain('genesis');
+    });
+
+    it('keeps the placeholders for a missing protocol version', () => {
+      const markdown = toMarkdown(
+        report({
+          nodeOutcomes: [{ node: 'node1', finalState: null, finalProtocolVersion: null, explanation: 'no data' }],
+          timeline: [{ timestampMs: 1000, node: 'node1', ledgerNum: null, protocolVersion: null, state: null }],
+        })
+      );
+      expect(markdown).toContain('| node1 | unknown | unknown | no data |');
+      expect(markdown).toContain('| +0s | node1 | — | — | — |');
+      expect(markdown).not.toContain('genesis');
+    });
+  });
 });
