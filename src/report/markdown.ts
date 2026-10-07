@@ -8,6 +8,13 @@ const VERDICT_EMOJI: Record<Verdict, string> = {
   INCONCLUSIVE: '❓',
 };
 
+/** Protocol 0 is what a fresh network reports before any upgrade is adopted. It is not an error,
+ * so the Markdown report says so. The JSON report keeps the plain number. */
+function formatProtocol(version: number | null | undefined, fallback: string): string {
+  if (version === null || version === undefined) return fallback;
+  return version === 0 ? '0 (genesis, never upgraded)' : String(version);
+}
+
 export function toMarkdown(report: DrillReport): string {
   const lines: string[] = [];
 
@@ -17,7 +24,7 @@ export function toMarkdown(report: DrillReport): string {
   lines.push('## Per-node outcome', '', '| Node | Final state | Protocol version | Explanation |', '| --- | --- | --- | --- |');
   for (const outcome of report.nodeOutcomes) {
     lines.push(
-      `| ${outcome.node} | ${outcome.finalState ?? 'unknown'} | ${outcome.finalProtocolVersion ?? 'unknown'} | ${outcome.explanation.replace(/\|/g, '\\|')} |`
+      `| ${outcome.node} | ${outcome.finalState ?? 'unknown'} | ${formatProtocol(outcome.finalProtocolVersion, 'unknown')} | ${outcome.explanation.replace(/\|/g, '\\|')} |`
     );
   }
   lines.push('');
@@ -33,7 +40,7 @@ export function toMarkdown(report: DrillReport): string {
   for (const row of report.timeline) {
     const elapsedSeconds = Math.round((row.timestampMs - start) / 1000);
     lines.push(
-      `| +${elapsedSeconds}s | ${row.node} | ${row.ledgerNum ?? '—'} | ${row.protocolVersion ?? '—'} | ${row.state ?? '—'} |`
+      `| +${elapsedSeconds}s | ${row.node} | ${row.ledgerNum ?? '—'} | ${formatProtocol(row.protocolVersion, '—')} | ${row.state ?? '—'} |`
     );
   }
   lines.push('');
