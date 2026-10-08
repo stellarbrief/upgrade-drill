@@ -26,7 +26,9 @@ blocks that specific vote, as seen live in this project's own `one-laggard` scen
 
 ## Quickstart
 
-Requires [Docker](https://docs.docker.com/get-docker/).
+Requires [Docker](https://docs.docker.com/get-docker/) with the Compose plugin, v2 or newer
+(`docker compose version` should work). If a first run fails or seems stuck, see
+[`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 ```bash
 git clone https://github.com/stellarbrief/upgrade-drill.git
