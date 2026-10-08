@@ -17,6 +17,7 @@ Docker, it says so.
 
 ### 1. Add a scenario that produces `NETWORK_LIVE_WITH_HALTED_NODES` in a real run
 **Complexity:** Medium
+**Posted on GitHub:** #9
 
 **Description**
 The verdict exists and is unit-tested, but no scenario has ever produced it against real
@@ -49,6 +50,7 @@ Changing the verdict logic in `src/verdict/engine.ts`.
 
 ### 2. Let a drill start from a real protocol version, not genesis 0
 **Complexity:** High
+**Posted on GitHub:** #10
 
 **Description**
 Every drill starts from a fresh network at ledger protocol 0, so it rehearses 0 to N, not the
