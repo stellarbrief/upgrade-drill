@@ -48,6 +48,31 @@ describe('parseScenario', () => {
     expect(() => parseScenario(bad)).toThrow(ScenarioError);
   });
 
+  it('rejects a nodesShouldStaySynced entry naming an undeclared node', () => {
+    const bad = {
+      ...validScenario,
+      expectations: { nodesShouldStaySynced: ['node1', 'nodde2'] },
+    };
+    expect(() => parseScenario(bad)).toThrow(ScenarioError);
+    expect(() => parseScenario(bad)).toThrow(/nodde2/);
+  });
+
+  it('accepts a nodesShouldStaySynced list of declared nodes', () => {
+    const scenario = parseScenario({
+      ...validScenario,
+      expectations: { nodesShouldStaySynced: ['node1', 'node2'] },
+    });
+    expect(scenario.expectations?.nodesShouldStaySynced).toEqual(['node1', 'node2']);
+  });
+
+  it('accepts an empty nodesShouldStaySynced list', () => {
+    const scenario = parseScenario({
+      ...validScenario,
+      expectations: { nodesShouldStaySynced: [] },
+    });
+    expect(scenario.expectations?.nodesShouldStaySynced).toEqual([]);
+  });
+
   it('accepts a stop-node and set-upgrade action on declared nodes', () => {
     const scenario = parseScenario({
       ...validScenario,

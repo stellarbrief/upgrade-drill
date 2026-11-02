@@ -84,6 +84,18 @@ export const ScenarioSchema = z
       });
     },
     { message: 'Every node name referenced in timeline actions must be declared in topology.validators.' }
-  );
+  )
+  .superRefine((scenario, ctx) => {
+    const names = new Set(scenario.topology.validators.map((v) => v.name));
+    for (const node of scenario.expectations?.nodesShouldStaySynced ?? []) {
+      if (!names.has(node)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['expectations', 'nodesShouldStaySynced'],
+          message: `Node "${node}" in expectations.nodesShouldStaySynced is not declared in topology.validators.`,
+        });
+      }
+    }
+  });
 
 export type Scenario = z.infer<typeof ScenarioSchema>;
